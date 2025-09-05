@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@material/material-color-utilities": "^0.3.0",
     "axios": "^1.11.0",
     "echarts": "^6.0.0",
     "fast-glob": "^3.3.3",
