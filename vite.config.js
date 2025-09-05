@@ -1,3 +1,4 @@
+import vitePluginsAutoI18n, { YoudaoTranslator } from 'vite-auto-i18n-plugin'
 import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 //引入path路径，用于路径别名
@@ -52,7 +53,15 @@ export default defineConfig(({ command, mode }) => {
         iconDirs: [path.resolve(process.cwd(), "src/assets/icons")],
         symbolId: "icon-[dir]-[name]",
       }),
-      vueDevTools(),
+      // vueDevTools(),
+      vitePluginsAutoI18n({
+        targetLangList: ['en'],
+        originLang: 'zh-cn',
+        translator: new YoudaoTranslator({
+          appId: '6506288d0eeee40d',
+          appKey: 'G3BHB83E6EgHaATIcu2HaL2YOhSteSsv'
+        })
+      })
     ],
     // CSS 预处理器配置
     css: {

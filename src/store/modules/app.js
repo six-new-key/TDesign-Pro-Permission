@@ -9,6 +9,9 @@ import {
   getSystemThemeMode,
   watchSystemThemeChange
 } from '@/utils/theme'
+import { merge } from 'lodash'
+import enConfig from 'tdesign-vue-next/es/locale/en_US'
+import zhConfig from 'tdesign-vue-next/es/locale/zh_CN'
 
 export const useAppStore = defineStore('app', () => {
   // state
@@ -26,6 +29,7 @@ export const useAppStore = defineStore('app', () => {
   const showBreadcrumb = ref(true) // 面包屑导航显示状态
   const showPageTags = ref(true) // 页签组件显示状态
   const showPageTagsElevation = ref(true) // 页签组件抬高效果显示状态
+  const defaultLang = ref('zhcn') // 语言
 
   // getters
   const currentTitle = computed(() => title.value)
@@ -243,6 +247,32 @@ export const useAppStore = defineStore('app', () => {
     showPageTagsElevation.value = !showPageTagsElevation.value
   }
 
+  //设置语言
+  const setLang = (lang) => {
+    defaultLang.value = lang
+  }
+
+  //获取语言
+  const getLang = () => {
+    return defaultLang.value
+  }
+
+  //语言切换
+  const langChange = (value) => {
+    window.localStorage.setItem('lang', value)
+    window.location.reload()
+  }
+
+  // 语言配置 getter
+  const globalConfig = computed(() => {
+    if (defaultLang.value === 'zhcn') {
+      return merge(zhConfig)
+    } else if (defaultLang.value === 'en') {
+      return merge(enConfig)
+    }
+    return merge(zhConfig) // 默认返回中文配置
+  })
+
   return {
     title,
     sidebarTheme,
@@ -294,6 +324,11 @@ export const useAppStore = defineStore('app', () => {
     setPageTagsVisible,
     togglePageTagsVisible,
     setPageTagsElevation,
-    togglePageTagsElevation
+    togglePageTagsElevation,
+    setLang,
+    getLang,
+    langChange,
+    defaultLang,
+    globalConfig
   }
 })

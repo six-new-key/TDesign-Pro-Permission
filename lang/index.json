@@ -1,0 +1,974 @@
+{
+	"fcdpse4": {
+		"zh-cn": "登录失败",
+		"en": "Login failed"
+	},
+	"uel0iza": {
+		"zh-cn": "网络错误，请稍后重试",
+		"en": "Network error. Please try again later"
+	},
+	"koca2": {
+		"zh-cn": "登录",
+		"en": "Log in"
+	},
+	"qylb2": {
+		"zh-cn": "首页",
+		"en": "Home Page"
+	},
+	"nr1d005": {
+		"zh-cn": "页面不存在",
+		"en": "The page does not exist."
+	},
+	"dnhnle4": {
+		"zh-cn": "权限管理",
+		"en": "Permission management"
+	},
+	"f6y6dw4": {
+		"zh-cn": "用户管理",
+		"en": "User Management"
+	},
+	"hxhx7p4": {
+		"zh-cn": "角色管理",
+		"en": "Role Management"
+	},
+	"gzj3um4": {
+		"zh-cn": "菜单管理",
+		"en": "Menu Management"
+	},
+	"gao8uh4": {
+		"zh-cn": "系统管理",
+		"en": "System Management"
+	},
+	"bv9v7q4": {
+		"zh-cn": "字典管理",
+		"en": "Dictionary management"
+	},
+	"bv601r4": {
+		"zh-cn": "字典数据",
+		"en": "Dictionary data"
+	},
+	"gakfrq4": {
+		"zh-cn": "系统日志",
+		"en": "System Log"
+	},
+	"ioh1ao4": {
+		"zh-cn": "通知管理",
+		"en": "Notice Management"
+	},
+	"adiweu4": {
+		"zh-cn": "任意路由",
+		"en": "Arbitrary routing"
+	},
+	"i3trb34": {
+		"zh-cn": "请求失败",
+		"en": "Request failed"
+	},
+	"6wvw9kb": {
+		"zh-cn": "登录已过期，请重新登录",
+		"en": "Your login has expired. Please log in again"
+	},
+	"gg79ok6": {
+		"zh-cn": "没有权限访问",
+		"en": "No permission to access"
+	},
+	"xmqreg8": {
+		"zh-cn": "请求的资源不存在",
+		"en": "The requested resource does not exist"
+	},
+	"g8mhnx7": {
+		"zh-cn": "服务器内部错误",
+		"en": "Internal server error"
+	},
+	"ki5iprc": {
+		"zh-cn": "网络连接失败，请检查网络",
+		"en": "The network connection failed. Please check the network"
+	},
+	"cyfyi79": {
+		"zh-cn": "正在切换布局...",
+		"en": "Switching layouts..."
+	},
+	"hn9nk3": {
+		"zh-cn": "用户量",
+		"en": "User volume"
+	},
+	"l76hs3": {
+		"zh-cn": "访问量",
+		"en": "Visit volume"
+	},
+	"c4q4d3": {
+		"zh-cn": "下载量",
+		"en": "Download volume"
+	},
+	"c7wpy3": {
+		"zh-cn": "使用量",
+		"en": "Usage volume"
+	},
+	"ee49mq4": {
+		"zh-cn": "流量趋势",
+		"en": "\"Traffic trend\""
+	},
+	"dl0wig4": {
+		"zh-cn": "月访问量",
+		"en": "Monthly visits"
+	},
+	"i9xmq3": {
+		"zh-cn": "移动端",
+		"en": "Mobile terminal"
+	},
+	"2d7g3": {
+		"zh-cn": "PC端",
+		"en": "PC end"
+	},
+	"gmss2": {
+		"zh-cn": "平板",
+		"en": "\"Tablet\""
+	},
+	"eae82": {
+		"zh-cn": "其他",
+		"en": "Others"
+	},
+	"i961qw4": {
+		"zh-cn": "访问设备",
+		"en": "Access the device"
+	},
+	"d5cnkv4": {
+		"zh-cn": "搜索引擎",
+		"en": "Search engine"
+	},
+	"ffed4w4": {
+		"zh-cn": "直接访问",
+		"en": "Direct access"
+	},
+	"il5bpf4": {
+		"zh-cn": "邮件营销",
+		"en": "Email marketing"
+	},
+	"gok5bq4": {
+		"zh-cn": "联盟广告",
+		"en": "Alliance Advertising"
+	},
+	"fts32": {
+		"zh-cn": "外站",
+		"en": "\"Outer station"
+	},
+	"j0b1": {
+		"zh-cn": "总",
+		"en": "The total"
+	},
+	"z4fvcu6": {
+		"zh-cn": " 流量趋势 ",
+		"en": "\"Traffic trend\""
+	},
+	"a2jko86": {
+		"zh-cn": " 月访问量 ",
+		"en": "Monthly visits"
+	},
+	"i8zuem4": {
+		"zh-cn": "访问数量",
+		"en": "Number of visits"
+	},
+	"i8zzfe4": {
+		"zh-cn": "访问来源",
+		"en": "\"Access source"
+	},
+	"p5h35y5": {
+		"zh-cn": "侧边栏布局",
+		"en": "Sidebar layout"
+	},
+	"md14j5i": {
+		"zh-cn": "传统的侧边栏布局，包含菜单和内容区域",
+		"en": "The traditional sidebar layout includes menu and content areas"
+	},
+	"jty72n4": {
+		"zh-cn": "顶部布局",
+		"en": "Top layout"
+	},
+	"2zy687k": {
+		"zh-cn": "顶部导航布局，通常包含顶部菜单和内容区域",
+		"en": "The top navigation layout usually includes the top menu and content area"
+	},
+	"e82p1q4": {
+		"zh-cn": "混合布局",
+		"en": "Mixed layout"
+	},
+	"naslmld": {
+		"zh-cn": "侧边栏和顶部导航的混合布局",
+		"en": "A hybrid layout of sidebar and top navigation"
+	},
+	"i52n5z8": {
+		"zh-cn": "页面刷新中...",
+		"en": "The page is refreshing..."
+	},
+	"fgkxx3": {
+		"zh-cn": "星期日",
+		"en": "Sunday"
+	},
+	"fgg803": {
+		"zh-cn": "星期一",
+		"en": "Monday"
+	},
+	"fggbw3": {
+		"zh-cn": "星期二",
+		"en": "Tuesday"
+	},
+	"fgg893": {
+		"zh-cn": "星期三",
+		"en": "Wednesday"
+	},
+	"fghyz3": {
+		"zh-cn": "星期四",
+		"en": "Thursday"
+	},
+	"fggc43": {
+		"zh-cn": "星期五",
+		"en": "Friday"
+	},
+	"fggwd3": {
+		"zh-cn": "星期六",
+		"en": "Saturday"
+	},
+	"ino1": {
+		"zh-cn": "年",
+		"en": "years"
+	},
+	"kco1": {
+		"zh-cn": "月",
+		"en": "month"
+	},
+	"hbyz2": {
+		"zh-cn": "日 ",
+		"en": "day"
+	},
+	"fips7y7": {
+		"zh-cn": "请输入解锁密码",
+		"en": "Please enter the unlock password"
+	},
+	"yyf1w1a": {
+		"zh-cn": "密码错误，请重新输入",
+		"en": "The password is incorrect. Please re-enter"
+	},
+	"i0e3rh4": {
+		"zh-cn": "解锁成功",
+		"en": "Unlock success"
+	},
+	"i1md0l8": {
+		"zh-cn": "解锁失败，请重试",
+		"en": "Unlock failed. Please try again"
+	},
+	"uoj6p25": {
+		"zh-cn": "已退出登录",
+		"en": "Logged out"
+	},
+	"7t4c85a": {
+		"zh-cn": "退出登录失败，请重试",
+		"en": "Logout failed. Please try again"
+	},
+	"uegdpc6": {
+		"zh-cn": " 点击解锁 ",
+		"en": "Click to unlock"
+	},
+	"ecjhv27": {
+		"zh-cn": "请输入锁屏密码",
+		"en": "Please enter the lock screen password"
+	},
+	"k607wy6": {
+		"zh-cn": " 进入系统 ",
+		"en": "Enter the system"
+	},
+	"kpwldo6": {
+		"zh-cn": " 返回登录 ",
+		"en": "Return to Login"
+	},
+	"javh2": {
+		"zh-cn": "浅色",
+		"en": "Light color"
+	},
+	"jezl2": {
+		"zh-cn": "深色",
+		"en": "Dark color"
+	},
+	"lydg2": {
+		"zh-cn": "系统",
+		"en": "System"
+	},
+	"ai8tm54": {
+		"zh-cn": "主题设置",
+		"en": "Theme Settings"
+	},
+	"eflm3v6": {
+		"zh-cn": " 主题模式 ",
+		"en": "Theme Mode"
+	},
+	"3wtbbm6": {
+		"zh-cn": " 界面显示 ",
+		"en": "Interface display"
+	},
+	"tan59v5": {
+		"zh-cn": "菜单栏主题",
+		"en": "Menu bar theme"
+	},
+	"yik0sc5": {
+		"zh-cn": "面包屑导航",
+		"en": "Breadcrumb navigation"
+	},
+	"juxl0k4": {
+		"zh-cn": "页面标签",
+		"en": "Page tag"
+	},
+	"tfrmu06": {
+		"zh-cn": "标签阴影效果",
+		"en": "Label shadow effect"
+	},
+	"v8a1bh6": {
+		"zh-cn": " 布局设置 ",
+		"en": "Layout Settings"
+	},
+	"hpqe2": {
+		"zh-cn": "搜索",
+		"en": "Search"
+	},
+	"ejix2": {
+		"zh-cn": "刷新",
+		"en": "Refresh"
+	},
+	"ii96jl4": {
+		"zh-cn": "退出全屏",
+		"en": "Exit full screen"
+	},
+	"ihihjl4": {
+		"zh-cn": "进入全屏",
+		"en": "Enter full screen"
+	},
+	"g85n2": {
+		"zh-cn": "展开",
+		"en": "\"Unfold"
+	},
+	"hwvn2": {
+		"zh-cn": "收缩",
+		"en": "Contraction"
+	},
+	"f5g353": {
+		"zh-cn": "操作一",
+		"en": "Operation One"
+	},
+	"f5g713": {
+		"zh-cn": "操作二",
+		"en": "Operation Two"
+	},
+	"ceh33s5": {
+		"zh-cn": "更多...",
+		"en": "More..."
+	},
+	"7wcz836": {
+		"zh-cn": "搜索导航菜单",
+		"en": "Search navigation menu"
+	},
+	"k7nd4j6": {
+		"zh-cn": "暂无搜索结果",
+		"en": "There are no search results for the moment"
+	},
+	"aim7t14": {
+		"zh-cn": "使用文档",
+		"en": "Use the documentation"
+	},
+	"tuqyz97": {
+		"zh-cn": "问题 & 帮助",
+		"en": "Questions & Help"
+	},
+	"j6fqzj4": {
+		"zh-cn": "锁定屏幕",
+		"en": "Lock the screen"
+	},
+	"iifi5w4": {
+		"zh-cn": "退出登录",
+		"en": "Log out"
+	},
+	"vhgmu88": {
+		"zh-cn": "锁定失败，请重试",
+		"en": "Lock failed. Please try again"
+	},
+	"mtpif4": {
+		"zh-cn": " 锁定 ",
+		"en": "Locked"
+	},
+	"wsnp4e8": {
+		"zh-cn": "确认退出登录吗？",
+		"en": "Are you sure you are logging out?"
+	},
+	"7grhuz6": {
+		"zh-cn": "请输入用户名",
+		"en": "Please enter your username"
+	},
+	"2j9vj05": {
+		"zh-cn": "请输入密码",
+		"en": "Please enter the password."
+	},
+	"sua2rea": {
+		"zh-cn": "密码长度不能少于6位",
+		"en": "The password length must not be less than 6 characters"
+	},
+	"fcewjt4": {
+		"zh-cn": "登录成功",
+		"en": "Login successful"
+	},
+	"jcfrjbf": {
+		"zh-cn": "登录过程中发生错误，请稍后重试",
+		"en": "An error occurred during the login process. Please try again later"
+	},
+	"ahgyeie": {
+		"zh-cn": "开箱即用的大型中后台管理系统",
+		"en": "A large-scale middle and back-end management system ready to use out of the box"
+	},
+	"5wld57h": {
+		"zh-cn": "工作台、高准确、界面精美的后台模板",
+		"en": "Workbench, highly accurate, and beautifully designed background templates"
+	},
+	"rfxc917": {
+		"zh-cn": "欢迎回来 👋",
+		"en": "Welcome back 👋"
+	},
+	"f7swrmi": {
+		"zh-cn": "请输入您的账号信息以开始管理您的项目",
+		"en": "Please enter your account information to start managing your project"
+	},
+	"7b32n16": {
+		"zh-cn": "请输入验证码",
+		"en": "Please enter the verification code"
+	},
+	"nbcoc3": {
+		"zh-cn": "验证码",
+		"en": "Verification code"
+	},
+	"hykar44": {
+		"zh-cn": "记住账号",
+		"en": "Remember the account"
+	},
+	"xfgztg5": {
+		"zh-cn": "忘记密码？",
+		"en": "Forgot password?"
+	},
+	"ide6e4": {
+		"zh-cn": " 登录 ",
+		"en": "Log in"
+	},
+	"dure2": {
+		"zh-cn": "中文",
+		"en": "Chinese"
+	},
+	"mtva2": {
+		"zh-cn": "英文",
+		"en": "English"
+	},
+	"hmxge3": {
+		"zh-cn": "用户名",
+		"en": "User name"
+	},
+	"padf2": {
+		"zh-cn": "邮箱",
+		"en": "Email"
+	},
+	"ewbd43": {
+		"zh-cn": "手机号",
+		"en": "Mobile phone number"
+	},
+	"k1e32": {
+		"zh-cn": "状态",
+		"en": "\"Status\""
+	},
+	"ar84e54": {
+		"zh-cn": "创建时间",
+		"en": "Creation time"
+	},
+	"hkxb2": {
+		"zh-cn": "操作",
+		"en": "Operation"
+	},
+	"a2vi1e7": {
+		"zh-cn": "用户名不能为空",
+		"en": "The username cannot be empty"
+	},
+	"rh88gkd": {
+		"zh-cn": "用户名长度为3-20个字符",
+		"en": "The length of the username should be 3 to 20 characters"
+	},
+	"bbe7jh6": {
+		"zh-cn": "邮箱不能为空",
+		"en": "The mailbox cannot be empty"
+	},
+	"anks06a": {
+		"zh-cn": "请输入正确的邮箱格式",
+		"en": "Please enter the correct email format"
+	},
+	"vxswh47": {
+		"zh-cn": "手机号不能为空",
+		"en": "The mobile phone number cannot be empty"
+	},
+	"w8axw89": {
+		"zh-cn": "请输入正确的手机号",
+		"en": "Please enter the correct mobile phone number"
+	},
+	"pcjrt76": {
+		"zh-cn": "密码不能为空",
+		"en": "The password cannot be empty"
+	},
+	"kzoyesc": {
+		"zh-cn": "密码长度为6-20个字符",
+		"en": "The password length should be 6 to 20 characters"
+	},
+	"vau9z58": {
+		"zh-cn": "确认密码不能为空",
+		"en": "Confirm that the password cannot be empty"
+	},
+	"785btda": {
+		"zh-cn": "两次输入的密码不一致",
+		"en": "The passwords entered twice are inconsistent"
+	},
+	"vcj2dh7": {
+		"zh-cn": "新密码不能为空",
+		"en": "The new password cannot be empty"
+	},
+	"azeh8z4": {
+		"zh-cn": "删除成功",
+		"en": "\"Deleted successfully"
+	},
+	"h971lx9": {
+		"zh-cn": "请选择要删除的用户",
+		"en": "Please select the user you want to delete"
+	},
+	"qmpy5s6": {
+		"zh-cn": "确认批量删除",
+		"en": "Confirm batch deletion"
+	},
+	"9kg3rb9": {
+		"zh-cn": "确定要删除选中的 ",
+		"en": "Make sure to delete the selected ones"
+	},
+	"hah3eae": {
+		"zh-cn": " 个用户吗？此操作不可撤销。",
+		"en": "Is that a user? This operation is irrevocable."
+	},
+	"fknink4": {
+		"zh-cn": "确定删除",
+		"en": "Confirm deletion"
+	},
+	"ev022": {
+		"zh-cn": "取消",
+		"en": "Cancel"
+	},
+	"fgbrrd6": {
+		"zh-cn": "批量删除成功",
+		"en": "Batch deletion successful"
+	},
+	"lb5z2": {
+		"zh-cn": "禁用",
+		"en": "Disabled"
+	},
+	"eymx2": {
+		"zh-cn": "启用",
+		"en": "Enabled"
+	},
+	"frrm3p4": {
+		"zh-cn": "确认操作",
+		"en": "Confirm operation"
+	},
+	"i3cwl3": {
+		"zh-cn": "确定要",
+		"en": "\"Sure to"
+	},
+	"f6cj814": {
+		"zh-cn": "用户 \"",
+		"en": "\"User\""
+	},
+	"122li4": {
+		"zh-cn": "\" 吗？",
+		"en": "\"?\""
+	},
+	"kzjg2": {
+		"zh-cn": "确定",
+		"en": "\"Sure\""
+	},
+	"h4sv2": {
+		"zh-cn": "成功",
+		"en": "Success"
+	},
+	"i2ik2": {
+		"zh-cn": "更新",
+		"en": "Update"
+	},
+	"ehj32": {
+		"zh-cn": "创建",
+		"en": "\"Create"
+	},
+	"yf34ga6": {
+		"zh-cn": "角色分配成功",
+		"en": "Role allocation was successful."
+	},
+	"xw1a176": {
+		"zh-cn": "密码重置成功",
+		"en": "Password reset successful"
+	},
+	"aye2av4": {
+		"zh-cn": "分配角色",
+		"en": "Assign roles"
+	},
+	"ix54os4": {
+		"zh-cn": "重置密码",
+		"en": "Reset password"
+	},
+	"7ji3y96": {
+		"zh-cn": "请输入手机号",
+		"en": "Please enter your mobile phone number"
+	},
+	"2eief25": {
+		"zh-cn": "请选择状态",
+		"en": "Please select the status"
+	},
+	"ftlbu4": {
+		"zh-cn": " 搜索 ",
+		"en": "Search"
+	},
+	"miwv34": {
+		"zh-cn": " 重置 ",
+		"en": "Reset"
+	},
+	"fvpaq4": {
+		"zh-cn": " 新增 ",
+		"en": "New addition"
+	},
+	"db22k4": {
+		"zh-cn": " 删除 ",
+		"en": "Delete"
+	},
+	"juz394": {
+		"zh-cn": " 编辑 ",
+		"en": "\"Editor"
+	},
+	"zdnopq9": {
+		"zh-cn": "确认删除该用户吗？",
+		"en": "Are you sure to delete this user?"
+	},
+	"gmn8ui4": {
+		"zh-cn": "编辑用户",
+		"en": "\"Edit User\""
+	},
+	"d79ta54": {
+		"zh-cn": "新增用户",
+		"en": "New user"
+	},
+	"2j0utw5": {
+		"zh-cn": "请输入邮箱",
+		"en": "Please enter your email address."
+	},
+	"g9ob2": {
+		"zh-cn": "密码",
+		"en": "Password"
+	},
+	"frqaup4": {
+		"zh-cn": "确认密码",
+		"en": "Confirm password"
+	},
+	"pyymjc7": {
+		"zh-cn": "请再次输入密码",
+		"en": "Please enter the password again"
+	},
+	"cp35x4": {
+		"zh-cn": " 保存 ",
+		"en": "Save"
+	},
+	"auez6f5": {
+		"zh-cn": " 为用户 ",
+		"en": "For users"
+	},
+	"c14kz77": {
+		"zh-cn": " 分配角色： ",
+		"en": "Assign roles"
+	},
+	"n4hqu15": {
+		"zh-cn": "已分配角色",
+		"en": "Assigned roles"
+	},
+	"fbw3tx9": {
+		"zh-cn": " 暂无已分配角色 ",
+		"en": "There are no assigned roles yet"
+	},
+	"g0qxyi5": {
+		"zh-cn": "可分配角色",
+		"en": "Assignable roles"
+	},
+	"9cboug9": {
+		"zh-cn": " 暂无可分配角色 ",
+		"en": "There are no assigned roles for the time being"
+	},
+	"dd4ni4": {
+		"zh-cn": " 取消 ",
+		"en": "Cancel"
+	},
+	"xfyi6c6": {
+		"zh-cn": " 重置密码 ",
+		"en": "Reset password"
+	},
+	"c0ybt3": {
+		"zh-cn": "为用户",
+		"en": "For users"
+	},
+	"fcgq33": {
+		"zh-cn": "新密码",
+		"en": "New password"
+	},
+	"7j1yla6": {
+		"zh-cn": "请输入新密码",
+		"en": "Please enter the new password"
+	},
+	"nswxpq8": {
+		"zh-cn": "请再次输入新密码",
+		"en": "Please enter the new password again"
+	},
+	"ley52kr": {
+		"zh-cn": "密码长度为6-20个字符，建议包含字母、数字和特殊字符",
+		"en": "The password length should be 6 to 20 characters. It is recommended to include letters, numbers and special characters"
+	},
+	"hxb80z4": {
+		"zh-cn": "角色名称",
+		"en": "Character name"
+	},
+	"hxij634": {
+		"zh-cn": "角色编码",
+		"en": "Role coding"
+	},
+	"xnzawj8": {
+		"zh-cn": "角色名称不能为空",
+		"en": "The character name cannot be empty"
+	},
+	"5p6zowe": {
+		"zh-cn": "角色名称长度为2-20个字符",
+		"en": "The character name should be 2 to 20 characters long"
+	},
+	"dx4n398": {
+		"zh-cn": "角色编码不能为空",
+		"en": "The role code cannot be empty"
+	},
+	"kmptuge": {
+		"zh-cn": "角色编码长度为2-20个字符",
+		"en": "The character encoding length is 2 to 20 characters"
+	},
+	"b2jo2k8": {
+		"zh-cn": "加载权限数据失败",
+		"en": "Failed to load the permission data"
+	},
+	"h9aqie9": {
+		"zh-cn": "请选择要删除的角色",
+		"en": "Please select the character you want to delete"
+	},
+	"9i6rybe": {
+		"zh-cn": " 个角色吗？此操作不可撤销。",
+		"en": "Is it a role? This operation is irrevocable."
+	},
+	"hwwa1u4": {
+		"zh-cn": "角色 \"",
+		"en": "\"Role\""
+	},
+	"dxfazia": {
+		"zh-cn": "获取角色权限数据失败",
+		"en": "Failed to obtain the character permission data"
+	},
+	"flrstw7": {
+		"zh-cn": "请输入角色名称",
+		"en": "Please enter the role name"
+	},
+	"flkhos7": {
+		"zh-cn": "请输入角色编码",
+		"en": "Please enter the role code"
+	},
+	"wn3xvx9": {
+		"zh-cn": "确认删除该角色吗？",
+		"en": "Are you sure to delete this character?"
+	},
+	"iz8dw6": {
+		"zh-cn": " 分配权限 ",
+		"en": "Assign permissions"
+	},
+	"gmqxqz4": {
+		"zh-cn": "编辑角色",
+		"en": "\"Editing role\""
+	},
+	"d7di6m4": {
+		"zh-cn": "新增角色",
+		"en": "New character added"
+	},
+	"proqbh6": {
+		"zh-cn": "权限分配成功",
+		"en": "Permission allocation successful"
+	},
+	"ay8alw4": {
+		"zh-cn": "分配权限",
+		"en": "Assign permissions"
+	},
+	"e32z2": {
+		"zh-cn": "保存",
+		"en": "Save"
+	},
+	"dujxbp7": {
+		"zh-cn": " 正在为角色 ",
+		"en": "Currently working on a role"
+	},
+	"dcor414": {
+		"zh-cn": "收起全部",
+		"en": "\"Pack up everything\""
+	},
+	"c1kdmz4": {
+		"zh-cn": "展开全部",
+		"en": "Expand all"
+	},
+	"b147f74": {
+		"zh-cn": "取消全选",
+		"en": "Cancel all selections"
+	},
+	"emxt2": {
+		"zh-cn": "全选",
+		"en": "select all"
+	},
+	"ii9i2n4": {
+		"zh-cn": "退出半屏",
+		"en": "Exit halfway screen"
+	},
+	"eo912": {
+		"zh-cn": "半屏",
+		"en": "Half a screen"
+	},
+	"8rjyhtb": {
+		"zh-cn": "正在加载权限数据...",
+		"en": "Permission data is being loaded..."
+	},
+	"jprn7b6": {
+		"zh-cn": "暂无权限数据",
+		"en": "There is no permission data for the time being"
+	},
+	"gzcenw4": {
+		"zh-cn": "菜单名称",
+		"en": "Menu name"
+	},
+	"lnjk2": {
+		"zh-cn": "类型",
+		"en": "Type"
+	},
+	"gbuf8n4": {
+		"zh-cn": "组件路径",
+		"en": "Component path"
+	},
+	"dneg984": {
+		"zh-cn": "权限标识",
+		"en": "Permission identifier"
+	},
+	"is6gk8": {
+		"zh-cn": "菜单名称不能为空",
+		"en": "The menu name cannot be empty"
+	},
+	"u5vcaze": {
+		"zh-cn": "菜单名称长度为1-50个字符",
+		"en": "The menu name should be 1 to 50 characters long"
+	},
+	"6do1ix8": {
+		"zh-cn": "菜单类型不能为空",
+		"en": "The menu type cannot be empty"
+	},
+	"pfcduxc": {
+		"zh-cn": "菜单名称（英文）不能为空",
+		"en": "The menu name (in English) cannot be empty"
+	},
+	"3sm6rt8": {
+		"zh-cn": "组件路径不能为空",
+		"en": "The component path cannot be empty"
+	},
+	"uc1zc48": {
+		"zh-cn": "权限标识不能为空",
+		"en": "The permission identifier cannot be empty"
+	},
+	"deua4r4": {
+		"zh-cn": "更新成功",
+		"en": "Update successful"
+	},
+	"ar737y4": {
+		"zh-cn": "创建成功",
+		"en": "\"Created successfully"
+	},
+	"kr3b2": {
+		"zh-cn": "目录",
+		"en": "Directory"
+	},
+	"mvw92": {
+		"zh-cn": "菜单",
+		"en": "Menu"
+	},
+	"hnt12": {
+		"zh-cn": "按钮",
+		"en": "Button"
+	},
+	"i7ej2": {
+		"zh-cn": "未知",
+		"en": "Unknown"
+	},
+	"gjqm6z7": {
+		"zh-cn": "请输入菜单名称",
+		"en": "Please enter the menu name"
+	},
+	"y8z6747": {
+		"zh-cn": "请选择菜单类型",
+		"en": "Please select the menu type"
+	},
+	"hzpd2": {
+		"zh-cn": "收起",
+		"en": "\"Collapse"
+	},
+	"xl2r909": {
+		"zh-cn": "确认删除该菜单吗？",
+		"en": "Are you sure you want to delete this menu?"
+	},
+	"1xdm3u6": {
+		"zh-cn": " 新增下级 ",
+		"en": "\"New subordinate\""
+	},
+	"gmpnxw4": {
+		"zh-cn": "编辑菜单",
+		"en": "Edit menu"
+	},
+	"d7c8dj4": {
+		"zh-cn": "新增菜单",
+		"en": "New menu added"
+	},
+	"adj5w64": {
+		"zh-cn": "上级菜单",
+		"en": "\"Superior menu\""
+	},
+	"3pq775h": {
+		"zh-cn": "请输入上级菜单名称（0为顶级菜单）",
+		"en": "Please enter the name of the upper-level menu (0 is the top-level menu)"
+	},
+	"gzj3ft4": {
+		"zh-cn": "菜单类型",
+		"en": "Menu type"
+	},
+	"lt8fuv8": {
+		"zh-cn": "菜单名称（英文）",
+		"en": "Menu Name (English"
+	},
+	"t6pphsb": {
+		"zh-cn": "请输入菜单名称（英文）",
+		"en": "Please enter the menu name (in English"
+	},
+	"h78lm87": {
+		"zh-cn": "请输入组件路径",
+		"en": "Please enter the component path"
+	},
+	"jvokln7": {
+		"zh-cn": "请输入权限标识",
+		"en": "Please enter the permission identifier"
+	},
+	"gzhhac4": {
+		"zh-cn": "菜单状态",
+		"en": "Menu status"
+	},
+	"wzbvcs6": {
+		"zh-cn": "字典数据管理",
+		"en": "Dictionary data management"
+	}
+}
