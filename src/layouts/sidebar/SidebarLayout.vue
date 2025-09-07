@@ -13,7 +13,7 @@
       <t-content class="main-content">
         <!-- 刷新loading状态 -->
         <div v-if="isRefreshing" class="refresh-loading">
-          <t-loading text="页面刷新中..." />
+          <t-loading text="刷新中..." />
         </div>
         <!-- 正常内容区域 -->
         <transition v-else name="content-fade" mode="out-in">
@@ -66,8 +66,6 @@ const handlePageRefresh = async () => {
   // 隐藏刷新加载状态
   isRefreshing.value = false
 }
-
-
 </script>
 
 <style scoped>
@@ -94,34 +92,12 @@ const handlePageRefresh = async () => {
   height: 100%;
 }
 
-/* 滚动条样式 */
-.main-content::-webkit-scrollbar {
-  width: 6px;
-}
-
-.main-content::-webkit-scrollbar-track {
-  background: var(--td-scrollbar-color);
-}
-
-.main-content::-webkit-scrollbar-thumb {
-  background: var(--td-scrollbar-thumb-color);
-  border-radius: 3px;
-}
-
-.main-content::-webkit-scrollbar-thumb:hover {
-  background: var(--td-scroll-track-color);
-}
-
 .refresh-loading {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 100%;
-  position: relative;
-  z-index: 10;
-  background: var(--td-bg-color-page);
-  opacity: 1 !important;
 }
 
 /* 内容区域过渡动画 - 纯淡入淡出效果 */
