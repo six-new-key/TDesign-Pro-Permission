@@ -15,8 +15,9 @@
         <div v-if="isRefreshing" class="refresh-loading">
           <t-loading text="刷新中..." />
         </div>
-        <!-- 正常内容区域 -->
-        <transition v-else name="content-fade" mode="out-in">
+         <!-- 正常内容区域 -->
+        <transition appear v-else :enter-active-class="`animate__animated ${getEnterAnimation}`"
+          :leave-active-class="`animate__animated ${getLeaveAnimation}`">
           <router-view :key="routerViewKey" />
         </transition>
       </t-content>
@@ -25,16 +26,163 @@
 </template>
 
 <script setup>
-import { watch, nextTick, ref } from 'vue'
+import { watch, nextTick, ref ,computed} from 'vue'
 import Header from './components/Header.vue'
 import Sidebar from './components/Sidebar.vue'
-import { useAppStore } from '@/store/modules/app'
+import { useAppStore,PAGE_ANIMATIONS } from '@/store/modules/app'
 
 const appStore = useAppStore()
 
 // 刷新状态管理
 const isRefreshing = ref(false)
 const routerViewKey = ref(0)
+
+// 动画效果计算属性
+const getEnterAnimation = computed(() => {
+  switch (appStore.currentPageAnimation) {
+    // 滑动动效
+    case PAGE_ANIMATIONS.SLIDE_LEFT:
+      return 'animate__backInLeft'
+    case PAGE_ANIMATIONS.SLIDE_RIGHT:
+      return 'animate__backInRight'
+    case PAGE_ANIMATIONS.SLIDE_UP:
+      return 'animate__backInUp'
+    case PAGE_ANIMATIONS.SLIDE_DOWN:
+      return 'animate__backInDown'
+    
+    // 淡入淡出动效
+    case PAGE_ANIMATIONS.FADE:
+      return 'animate__fadeIn'
+    case PAGE_ANIMATIONS.FADE_IN_UP:
+      return 'animate__fadeInUp'
+    case PAGE_ANIMATIONS.FADE_IN_DOWN:
+      return 'animate__fadeInDown'
+    case PAGE_ANIMATIONS.FADE_IN_LEFT:
+      return 'animate__fadeInLeft'
+    case PAGE_ANIMATIONS.FADE_IN_RIGHT:
+      return 'animate__fadeInRight'
+    
+    // 缩放动效
+    case PAGE_ANIMATIONS.ZOOM:
+      return 'animate__zoomIn'
+    case PAGE_ANIMATIONS.ZOOM_IN_DOWN:
+      return 'animate__zoomInDown'
+    
+    // 翻转动效
+    case PAGE_ANIMATIONS.FLIP:
+      return 'animate__flipInY'
+    
+    // 弹跳动效
+    case PAGE_ANIMATIONS.BOUNCE:
+      return 'animate__bounceIn'
+    case PAGE_ANIMATIONS.BOUNCE_IN_LEFT:
+      return 'animate__bounceInLeft'
+    case PAGE_ANIMATIONS.BOUNCE_IN_RIGHT:
+      return 'animate__bounceInRight'
+    
+    // 旋转动效
+    case PAGE_ANIMATIONS.ROTATE_IN_DOWN_LEFT:
+      return 'animate__rotateInDownLeft'
+    case PAGE_ANIMATIONS.ROTATE_IN_DOWN_RIGHT:
+      return 'animate__rotateInDownRight'
+    case PAGE_ANIMATIONS.ROTATE_IN_UP_LEFT:
+      return 'animate__rotateInUpLeft'
+    case PAGE_ANIMATIONS.ROTATE_IN_UP_RIGHT:
+      return 'animate__rotateInUpRight'
+    
+    // 光速动效
+    case PAGE_ANIMATIONS.LIGHT_SPEED_IN_LEFT:
+      return 'animate__lightSpeedInLeft'
+    case PAGE_ANIMATIONS.LIGHT_SPEED_IN_RIGHT:
+      return 'animate__lightSpeedInRight'
+    
+    // 摆动动效
+    case PAGE_ANIMATIONS.SWING:
+      return 'animate__swing'
+    case PAGE_ANIMATIONS.JELLO:
+      return 'animate__jello'
+    
+    // 心跳动效
+    case PAGE_ANIMATIONS.PULSE:
+      return 'animate__pulse'
+    
+    default:
+      return 'animate__fadeIn'
+  }
+})
+
+const getLeaveAnimation = computed(() => {
+  switch (appStore.currentPageAnimation) {
+    // 滑动动效
+    case PAGE_ANIMATIONS.SLIDE_LEFT:
+      return 'animate__backOutRight'
+    case PAGE_ANIMATIONS.SLIDE_RIGHT:
+      return 'animate__backOutLeft'
+    case PAGE_ANIMATIONS.SLIDE_UP:
+      return 'animate__backOutDown'
+    case PAGE_ANIMATIONS.SLIDE_DOWN:
+      return 'animate__backOutUp'
+    
+    // 淡入淡出动效
+    case PAGE_ANIMATIONS.FADE:
+      return 'animate__fadeOut'
+    case PAGE_ANIMATIONS.FADE_IN_UP:
+      return 'animate__fadeOutUp'
+    case PAGE_ANIMATIONS.FADE_IN_DOWN:
+      return 'animate__fadeOutDown'
+    case PAGE_ANIMATIONS.FADE_IN_LEFT:
+      return 'animate__fadeOutLeft'
+    case PAGE_ANIMATIONS.FADE_IN_RIGHT:
+      return 'animate__fadeOutRight'
+    
+    // 缩放动效
+    case PAGE_ANIMATIONS.ZOOM:
+      return 'animate__zoomOut'
+    case PAGE_ANIMATIONS.ZOOM_IN_DOWN:
+      return 'animate__zoomOutDown'
+    
+    // 翻转动效
+    case PAGE_ANIMATIONS.FLIP:
+      return 'animate__flipOutY'
+    
+    // 弹跳动效
+    case PAGE_ANIMATIONS.BOUNCE:
+      return 'animate__bounceOut'
+    case PAGE_ANIMATIONS.BOUNCE_IN_LEFT:
+      return 'animate__bounceOutLeft'
+    case PAGE_ANIMATIONS.BOUNCE_IN_RIGHT:
+      return 'animate__bounceOutRight'
+    
+    // 旋转动效
+    case PAGE_ANIMATIONS.ROTATE_IN_DOWN_LEFT:
+      return 'animate__rotateOutDownLeft'
+    case PAGE_ANIMATIONS.ROTATE_IN_DOWN_RIGHT:
+      return 'animate__rotateOutDownRight'
+    case PAGE_ANIMATIONS.ROTATE_IN_UP_LEFT:
+      return 'animate__rotateOutUpLeft'
+    case PAGE_ANIMATIONS.ROTATE_IN_UP_RIGHT:
+      return 'animate__rotateOutUpRight'
+    
+    // 光速动效
+    case PAGE_ANIMATIONS.LIGHT_SPEED_IN_LEFT:
+      return 'animate__lightSpeedOutLeft'
+    case PAGE_ANIMATIONS.LIGHT_SPEED_IN_RIGHT:
+      return 'animate__lightSpeedOutRight'
+    
+    // 摆动动效
+    case PAGE_ANIMATIONS.SWING:
+      return 'animate__swing'
+    case PAGE_ANIMATIONS.JELLO:
+      return 'animate__jello'
+    
+    // 心跳动效
+    case PAGE_ANIMATIONS.PULSE:
+      return 'animate__pulse'
+    
+    default:
+      return 'animate__fadeOut'
+  }
+})
 
 // 监听刷新状态
 watch(

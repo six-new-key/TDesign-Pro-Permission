@@ -83,13 +83,31 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 页面动画设置 -->
+            <div class="setting-section">
+                <h4 class="section-title">
+                    页面动效
+                </h4>
+                <div class="animation-options">
+                    <div v-for="animation in pageAnimations" :key="animation.value" class="animation-item"
+                        :class="{ active: appStore.currentPageAnimation === animation.value }"
+                        @click="handleAnimationChange(animation.value)">
+                        <div class="animation-content">
+                            <t-icon :name="animation.icon" class="animation-icon" />
+                            <span class="animation-label">{{ animation.label }}</span>
+                        </div>
+                        <t-icon v-if="appStore.currentPageAnimation === animation.value" name="check" class="check-icon" />
+                    </div>
+                </div>
+            </div>
         </div>
     </t-drawer>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
-import { useAppStore } from '@/store/modules/app'
+import { computed } from 'vue'
+import { useAppStore ,PAGE_ANIMATIONS} from '@/store/modules/app'
 import { useLayoutStore } from '@/store/modules/layout'
 import { THEME_MODE } from '@/utils/theme'
 
@@ -119,6 +137,43 @@ const themeModes = [
     { value: THEME_MODE.LIGHT, label: '浅色', icon: 'sunny' },
     { value: THEME_MODE.DARK, label: '深色', icon: 'moon' },
     { value: THEME_MODE.AUTO, label: '系统', icon: 'desktop' }
+]
+
+// 页面动画效果选项
+const pageAnimations = [
+    // 滑动动效
+    { value: PAGE_ANIMATIONS.SLIDE_LEFT, label: '从左滑入', icon: 'chevron-right' },
+    { value: PAGE_ANIMATIONS.SLIDE_RIGHT, label: '从右滑入', icon: 'chevron-left' },
+    { value: PAGE_ANIMATIONS.SLIDE_UP, label: '从下滑入', icon: 'chevron-up' },
+    { value: PAGE_ANIMATIONS.SLIDE_DOWN, label: '从上滑入', icon: 'chevron-down' },
+    // 淡入淡出动效
+    { value: PAGE_ANIMATIONS.FADE, label: '淡入淡出', icon: 'view-module' },
+    { value: PAGE_ANIMATIONS.FADE_IN_UP, label: '淡入向上', icon: 'arrow-up' },
+    { value: PAGE_ANIMATIONS.FADE_IN_DOWN, label: '淡入向下', icon: 'arrow-down' },
+    { value: PAGE_ANIMATIONS.FADE_IN_LEFT, label: '淡入向左', icon: 'arrow-left' },
+    { value: PAGE_ANIMATIONS.FADE_IN_RIGHT, label: '淡入向右', icon: 'arrow-right' },
+    { value: PAGE_ANIMATIONS.ZOOM_IN_DOWN, label: '放大向下', icon: 'aspect-ratio' },
+    { value: PAGE_ANIMATIONS.BOUNCE_IN_LEFT, label: '弹跳向左', icon: 'call-received' },
+    { value: PAGE_ANIMATIONS.BOUNCE_IN_RIGHT, label: '弹跳向右', icon: 'call-made' },
+    // 旋转动效
+    { value: PAGE_ANIMATIONS.ROTATE_IN_DOWN_LEFT, label: '左下旋转', icon: 'rotate-ccw' },
+    { value: PAGE_ANIMATIONS.ROTATE_IN_DOWN_RIGHT, label: '右下旋转', icon: 'rotate-cw' },
+    { value: PAGE_ANIMATIONS.ROTATE_IN_UP_LEFT, label: '左上旋转', icon: 'undo' },
+    { value: PAGE_ANIMATIONS.ROTATE_IN_UP_RIGHT, label: '右上旋转', icon: 'redo' },
+    // 光速动效
+    { value: PAGE_ANIMATIONS.LIGHT_SPEED_IN_LEFT, label: '光速左入', icon: 'fast-forward' },
+    { value: PAGE_ANIMATIONS.LIGHT_SPEED_IN_RIGHT, label: '光速右入', icon: 'fast-rewind' },
+    // 缩放动效
+    { value: PAGE_ANIMATIONS.ZOOM, label: '缩放效果', icon: 'fullscreen' },
+    // 弹跳动效
+    { value: PAGE_ANIMATIONS.BOUNCE, label: '弹跳效果', icon: 'jump' },
+    // 翻转动效
+    { value: PAGE_ANIMATIONS.FLIP, label: '翻转效果', icon: 'swap' },
+    // 摆动动效
+    { value: PAGE_ANIMATIONS.SWING, label: '摆动效果', icon: 'vibration' },
+    { value: PAGE_ANIMATIONS.JELLO, label: '果冻效果', icon: 'blur-on' },
+    // 心跳动效
+    { value: PAGE_ANIMATIONS.PULSE, label: '脉冲效果', icon: 'radio-button-checked' }
 ]
 
 // 侧边栏主题开关状态
@@ -164,6 +219,12 @@ const handlePageTagsChange = (value) => {
 // 处理页签抬高效果开关变化
 const handlePageTagsElevationChange = (value) => {
     appStore.setPageTagsElevation(value)
+}
+
+// 处理动画效果切换
+const handleAnimationChange = (animation) => {
+    appStore.setPageAnimation(animation)
+    handleApply();
 }
 
 const handleApply = () => {
@@ -295,6 +356,72 @@ defineExpose({
 .control-label {
     font-size: 14px;
     color: var(--td-text-color-primary);
+}
+
+/* 动画选项样式 */
+.animation-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding: 15px;
+}
+
+.animation-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 4px;
+    border: 1px solid var(--td-border-level-1-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--td-bg-color-container);
+    min-height: 40px;
+    position: relative;
+    margin: 0 4px 4px 0;
+}
+
+.animation-item:hover {
+    border-color: var(--td-brand-color);
+    background: var(--td-bg-color-container-hover);
+}
+
+.animation-item.active {
+    border-color: var(--td-brand-color);
+    background: var(--td-brand-color-light);
+}
+
+.animation-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.animation-icon {
+    font-size: 16px;
+    color: var(--td-text-color-secondary);
+}
+
+.animation-item.active .animation-icon {
+    color: var(--td-brand-color);
+}
+
+.animation-label {
+    font-size: 11px;
+    color: var(--td-text-color-primary);
+    text-align: center;
+    line-height: 1.1;
+}
+
+.animation-item .check-icon {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 12px;
+    color: var(--td-brand-color);
 }
 
 /* 布局选项样式 */

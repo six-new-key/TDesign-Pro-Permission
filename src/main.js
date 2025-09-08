@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import TDesign from 'tdesign-vue-next'
 import 'tdesign-vue-next/es/style/index.css'
 import './style.css'
+import 'animate.css'
 import router from './router'
 //引入pina
 import pinia from "@/store";

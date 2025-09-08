@@ -13,6 +13,51 @@ import { merge } from 'lodash'
 import enConfig from 'tdesign-vue-next/es/locale/en_US'
 import zhConfig from 'tdesign-vue-next/es/locale/zh_CN'
 
+// 页面切换动画效果选项
+export const PAGE_ANIMATIONS = {
+  // 滑动动效
+  SLIDE_LEFT: 'slide-left',
+  SLIDE_RIGHT: 'slide-right',
+  SLIDE_UP: 'slide-up',
+  SLIDE_DOWN: 'slide-down',
+  
+  // 淡入淡出动效
+  FADE: 'fade',
+  FADE_IN_UP: 'fadeInUp',
+  FADE_IN_DOWN: 'fadeInDown',
+  FADE_IN_LEFT: 'fadeInLeft',
+  FADE_IN_RIGHT: 'fadeInRight',
+  
+  // 缩放动效
+  ZOOM: 'zoom',
+  ZOOM_IN_DOWN: 'zoomInDown',
+  
+  // 翻转动效
+  FLIP: 'flip',
+  
+  // 弹跳动效
+  BOUNCE: 'bounce',
+  BOUNCE_IN_LEFT: 'bounceInLeft',
+  BOUNCE_IN_RIGHT: 'bounceInRight',
+  
+  // 旋转动效
+  ROTATE_IN_DOWN_LEFT: 'rotateInDownLeft',
+  ROTATE_IN_DOWN_RIGHT: 'rotateInDownRight',
+  ROTATE_IN_UP_LEFT: 'rotateInUpLeft',
+  ROTATE_IN_UP_RIGHT: 'rotateInUpRight',
+  
+  // 光速动效
+  LIGHT_SPEED_IN_LEFT: 'lightSpeedInLeft',
+  LIGHT_SPEED_IN_RIGHT: 'lightSpeedInRight',
+  
+  // 摆动动效
+  SWING: 'swing',
+  JELLO: 'jello',
+  
+  // 心跳动效
+  PULSE: 'pulse'
+}
+
 export const useAppStore = defineStore('app', () => {
   // state
   const title = ref('')
@@ -46,6 +91,8 @@ export const useAppStore = defineStore('app', () => {
   const currentActualThemeMode = computed(() => actualThemeMode.value)
   const isDarkMode = computed(() => actualThemeMode.value === 'dark')
   const isAutoMode = computed(() => themeMode.value === THEME_MODE.AUTO)
+  //默认页面切换动画
+  const currentPageAnimation = ref(PAGE_ANIMATIONS.BOUNCE_IN_LEFT)
 
   // actions
   const setTitle = (newTitle) => {
@@ -273,7 +320,12 @@ export const useAppStore = defineStore('app', () => {
     return merge(zhConfig) // 默认返回中文配置
   })
 
-  return {
+  // 设置页面切换动画
+  const setPageAnimation = (animation) => {
+    currentPageAnimation.value = animation
+  }
+
+  return {  
     title,
     sidebarTheme,
     sidebarCollapsed,
@@ -329,6 +381,8 @@ export const useAppStore = defineStore('app', () => {
     getLang,
     langChange,
     defaultLang,
-    globalConfig
+    globalConfig,
+    currentPageAnimation,
+    setPageAnimation
   }
 })

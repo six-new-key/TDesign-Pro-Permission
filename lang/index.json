@@ -970,5 +970,109 @@
 	"wzbvcs6": {
 		"zh-cn": "字典数据管理",
 		"en": "Dictionary data management"
+	},
+	"25biey6": {
+		"zh-cn": "刷新中...",
+		"en": "Refreshing..."
+	},
+	"8kvyh96": {
+		"zh-cn": " 页面动效 ",
+		"en": "Page animations"
+	},
+	"ac40i44": {
+		"zh-cn": "从左滑入",
+		"en": "Slide in from the left"
+	},
+	"aanjvd4": {
+		"zh-cn": "从右滑入",
+		"en": "Slide in from the right"
+	},
+	"a9sepd4": {
+		"zh-cn": "从下滑入",
+		"en": "From sliding in"
+	},
+	"a9sdyo4": {
+		"zh-cn": "从上滑入",
+		"en": "Slide in from above"
+	},
+	"e7ddy54": {
+		"zh-cn": "淡入淡出",
+		"en": "Fade in and fade out"
+	},
+	"e78z3x4": {
+		"zh-cn": "淡入向上",
+		"en": "Fade into the upward trend"
+	},
+	"e78z3y4": {
+		"zh-cn": "淡入向下",
+		"en": "Fade in downward"
+	},
+	"e7928p4": {
+		"zh-cn": "淡入向左",
+		"en": "Fade to the left"
+	},
+	"e7909y4": {
+		"zh-cn": "淡入向右",
+		"en": "Fade to the right"
+	},
+	"d563r74": {
+		"zh-cn": "放大向下",
+		"en": "Zoom down"
+	},
+	"clkmdr4": {
+		"zh-cn": "弹跳向左",
+		"en": "Jump to the left"
+	},
+	"clkkf04": {
+		"zh-cn": "弹跳向右",
+		"en": "Jump to the right"
+	},
+	"c6ah0m4": {
+		"zh-cn": "左下旋转",
+		"en": "Rotate to the lower left"
+	},
+	"ax45fd4": {
+		"zh-cn": "右下旋转",
+		"en": "Rotate down to the right"
+	},
+	"c6ag9x4": {
+		"zh-cn": "左上旋转",
+		"en": "Rotate to the upper left"
+	},
+	"ax44oo4": {
+		"zh-cn": "右上旋转",
+		"en": "Rotate to the upper right"
+	},
+	"aunf794": {
+		"zh-cn": "光速左入",
+		"en": "Left entry at the speed of light"
+	},
+	"aulqa04": {
+		"zh-cn": "光速右入",
+		"en": "Right entry at the speed of light"
+	},
+	"ggpj614": {
+		"zh-cn": "缩放效果",
+		"en": "Zoom effect"
+	},
+	"clnlpq4": {
+		"zh-cn": "弹跳效果",
+		"en": "Bouncing effect"
+	},
+	"gqm19h4": {
+		"zh-cn": "翻转效果",
+		"en": "Flip effect"
+	},
+	"czwkc64": {
+		"zh-cn": "摆动效果",
+		"en": "Swing effect"
+	},
+	"dewzeb4": {
+		"zh-cn": "果冻效果",
+		"en": "Jelly effect"
+	},
+	"gmcycd4": {
+		"zh-cn": "脉冲效果",
+		"en": "Pulse effect"
 	}
 }
