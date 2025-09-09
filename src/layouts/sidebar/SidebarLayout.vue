@@ -16,8 +16,7 @@
           <t-loading text="刷新中..." />
         </div>
         <!-- 正常内容区域 -->
-        <transition v-else appear mode="out-in" :enter-active-class="`animate__animated ${getEnterAnimation}`"
-          :leave-active-class="`animate__animated ${getLeaveAnimation}`">
+        <transition v-else appear mode="out-in" :enter-active-class="`animate__animated ${getEnterAnimation}`">
           <router-view :key="routerViewKey" />
         </transition>
       </t-content>
@@ -108,79 +107,6 @@ const getEnterAnimation = computed(() => {
 
     default:
       return 'animate__fadeIn'
-  }
-})
-
-const getLeaveAnimation = computed(() => {
-  switch (appStore.currentPageAnimation) {
-    // 滑动动效
-    case PAGE_ANIMATIONS.SLIDE_LEFT:
-      return 'animate__backOutRight'
-    case PAGE_ANIMATIONS.SLIDE_RIGHT:
-      return 'animate__backOutLeft'
-    case PAGE_ANIMATIONS.SLIDE_UP:
-      return 'animate__backOutDown'
-    case PAGE_ANIMATIONS.SLIDE_DOWN:
-      return 'animate__backOutUp'
-
-    // 淡入淡出动效
-    case PAGE_ANIMATIONS.FADE:
-      return 'animate__fadeOut'
-    case PAGE_ANIMATIONS.FADE_IN_UP:
-      return 'animate__fadeOutUp'
-    case PAGE_ANIMATIONS.FADE_IN_DOWN:
-      return 'animate__fadeOutDown'
-    case PAGE_ANIMATIONS.FADE_IN_LEFT:
-      return 'animate__fadeOutLeft'
-    case PAGE_ANIMATIONS.FADE_IN_RIGHT:
-      return 'animate__fadeOutRight'
-
-    // 缩放动效
-    case PAGE_ANIMATIONS.ZOOM:
-      return 'animate__zoomOut'
-    case PAGE_ANIMATIONS.ZOOM_IN_DOWN:
-      return 'animate__zoomOutDown'
-
-    // 翻转动效
-    case PAGE_ANIMATIONS.FLIP:
-      return 'animate__flipOutY'
-
-    // 弹跳动效
-    case PAGE_ANIMATIONS.BOUNCE:
-      return 'animate__bounceOut'
-    case PAGE_ANIMATIONS.BOUNCE_IN_LEFT:
-      return 'animate__bounceOutLeft'
-    case PAGE_ANIMATIONS.BOUNCE_IN_RIGHT:
-      return 'animate__bounceOutRight'
-
-    // 旋转动效
-    case PAGE_ANIMATIONS.ROTATE_IN_DOWN_LEFT:
-      return 'animate__rotateOutDownLeft'
-    case PAGE_ANIMATIONS.ROTATE_IN_DOWN_RIGHT:
-      return 'animate__rotateOutDownRight'
-    case PAGE_ANIMATIONS.ROTATE_IN_UP_LEFT:
-      return 'animate__rotateOutUpLeft'
-    case PAGE_ANIMATIONS.ROTATE_IN_UP_RIGHT:
-      return 'animate__rotateOutUpRight'
-
-    // 光速动效
-    case PAGE_ANIMATIONS.LIGHT_SPEED_IN_LEFT:
-      return 'animate__lightSpeedOutLeft'
-    case PAGE_ANIMATIONS.LIGHT_SPEED_IN_RIGHT:
-      return 'animate__lightSpeedOutRight'
-
-    // 摆动动效
-    case PAGE_ANIMATIONS.SWING:
-      return 'animate__swing'
-    case PAGE_ANIMATIONS.JELLO:
-      return 'animate__jello'
-
-    // 心跳动效
-    case PAGE_ANIMATIONS.PULSE:
-      return 'animate__pulse'
-
-    default:
-      return 'animate__fadeOut'
   }
 })
 
