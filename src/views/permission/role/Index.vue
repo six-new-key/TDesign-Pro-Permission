@@ -1,4 +1,5 @@
 <template>
+  <div class="permission-role-container">
     <!-- 搜索和操作区域 -->
     <t-card :bordered="false" class="search-card">
         <!-- 搜索表单容器：左右布局，左侧表单自适应，右侧按钮固定宽度 -->
@@ -143,6 +144,7 @@
     <PermissionAssignDialog v-model:visible="permissionDialogVisible" :roleInfo="currentRole"
         :allPermissions="allPermissions" :rolePermissions="currentRolePermissions"
         @save-success="handlePermissionSaveSuccess" />
+  </div>
 </template>
 
 <script setup>

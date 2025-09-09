@@ -247,20 +247,4 @@ const handlePageRefresh = async () => {
   height: 100%;
   width: 100%;
 }
-
-/* 内容区域过渡动画 - 纯淡入淡出效果 */
-.content-fade-enter-active,
-.content-fade-leave-active {
-  transition: opacity 0.4s ease-in-out;
-}
-
-.content-fade-enter-from,
-.content-fade-leave-to {
-  opacity: 0;
-}
-
-.content-fade-enter-to,
-.content-fade-leave-from {
-  opacity: 1;
-}
 </style>

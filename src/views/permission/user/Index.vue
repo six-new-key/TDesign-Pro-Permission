@@ -1,4 +1,5 @@
 <template>
+  <div class="permission-user-container">
     <!-- 搜索和操作区域 -->
     <t-card :bordered="false" class="search-card">
         <!-- 搜索表单容器：左右布局，左侧表单自适应，右侧按钮固定宽度 -->
@@ -230,6 +231,7 @@
             </div>
         </template>
     </t-dialog>
+  </div>
 </template>
 
 <script setup>
