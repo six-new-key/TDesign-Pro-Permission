@@ -1,150 +1,150 @@
 <template>
-  <div class="permission-role-container">
-    <!-- 搜索和操作区域 -->
-    <t-card :bordered="false" class="search-card">
-        <!-- 搜索表单容器：左右布局，左侧表单自适应，右侧按钮固定宽度 -->
-        <div class="search-form">
-            <!-- 左侧表单区域：包含搜索条件 -->
-            <div class="search-form-left">
-                <t-form ref="searchFormRef" :data="searchForm" layout="inline" :label-width="0">
-                    <!-- 角色名称搜索 -->
-                    <t-form-item name="name">
-                        <t-input v-model="searchForm.name" placeholder="请输入角色名称" clearable style="width: 200px" />
-                    </t-form-item>
-                    <!-- 角色编码搜索 -->
-                    <t-form-item name="code">
-                        <t-input v-model="searchForm.code" placeholder="请输入角色编码" clearable style="width: 200px" />
-                    </t-form-item>
-                    <!-- 状态筛选 -->
-                    <t-form-item name="status">
-                        <t-select v-model="searchForm.status" placeholder="请选择状态" clearable style="width: 200px">
-                            <t-option value="1" label="启用" />
-                            <t-option value="0" label="禁用" />
-                        </t-select>
-                    </t-form-item>
-                </t-form>
-            </div>
-            <!-- 右侧操作按钮区域：搜索和重置按钮 -->
-            <div class="search-form-right">
-                <t-space>
-                    <!-- 搜索按钮 -->
-                    <t-button theme="primary" @click="handleSearch">
-                        <template #icon><t-icon name="search" /></template>
-                        搜索
-                    </t-button>
-                    <!-- 重置按钮 -->
-                    <t-button theme="default" @click="handleReset">
-                        <template #icon><t-icon name="refresh" /></template>
-                        重置
-                    </t-button>
-                </t-space>
-            </div>
-        </div>
-    </t-card>
-
-    <!-- 数据表格区域 -->
-    <t-card :bordered="false" class="table-card">
-        <!-- 表格头部操作区域 -->
-        <template #header>
-            <div class="button-layout">
-                <!-- 新增角色按钮 -->
-                <t-button theme="primary" @click="handleAdd">
-                    <template #icon><t-icon name="add" /></template>
-                    新增
-                </t-button>
-                <!-- 批量删除按钮：根据选中状态动态显示数量 -->
-                <t-button theme="danger" :disabled="selectedRowKeys.length === 0" @click="handleBatchDelete">
-                    <template #icon><t-icon name="delete" /></template>
-                    删除 {{ selectedRowKeys.length > 0 ? `(${selectedRowKeys.length})` : '' }}
-                </t-button>
-            </div>
-        </template>
-        <!-- 角色数据表格：支持多选、分页、排序等功能 -->
-        <t-table :maxHeight="tableMaxHeight" ref="tableRef" :data="tableData" :columns="columns" :loading="loading"
-            :pagination="pagination" :selected-row-keys="selectedRowKeys" row-key="id" active-row-type="single" hover
-            @select-change="handleSelectChange" @page-change="handlePageChange">
-            <!-- 状态列自定义渲染：显示启用/禁用标签 -->
-            <template #status="{ row }">
-                <t-tag :theme="row.status === 1 ? 'success' : 'danger'" variant="light">
-                    {{ row.status === 1 ? '启用' : '禁用' }}
-                </t-tag>
-            </template>
-
-            <!-- 操作列自定义渲染：编辑、删除、分配权限、状态切换 -->
-            <template #operation="{ row }">
-                <t-space>
-                    <!-- 编辑按钮 -->
-                    <t-button theme="primary" variant="text" size="small" @click="handleEdit(row)">
-                        <template #icon><t-icon name="edit" /></template>
-                        编辑
-                    </t-button>
-                    <!-- 删除按钮：带确认弹窗 -->
-                    <t-popconfirm content="确认删除该角色吗？" @confirm="handleDelete(row)">
-                        <t-button theme="danger" variant="text" size="small">
-                            <template #icon><t-icon name="delete" /></template>
-                            删除
+    <div>
+        <!-- 搜索和操作区域 -->
+        <t-card :bordered="false" class="search-card">
+            <!-- 搜索表单容器：左右布局，左侧表单自适应，右侧按钮固定宽度 -->
+            <div class="search-form">
+                <!-- 左侧表单区域：包含搜索条件 -->
+                <div class="search-form-left">
+                    <t-form ref="searchFormRef" :data="searchForm" layout="inline" :label-width="0">
+                        <!-- 角色名称搜索 -->
+                        <t-form-item name="name">
+                            <t-input v-model="searchForm.name" placeholder="请输入角色名称" clearable style="width: 200px" />
+                        </t-form-item>
+                        <!-- 角色编码搜索 -->
+                        <t-form-item name="code">
+                            <t-input v-model="searchForm.code" placeholder="请输入角色编码" clearable style="width: 200px" />
+                        </t-form-item>
+                        <!-- 状态筛选 -->
+                        <t-form-item name="status">
+                            <t-select v-model="searchForm.status" placeholder="请选择状态" clearable style="width: 200px">
+                                <t-option value="1" label="启用" />
+                                <t-option value="0" label="禁用" />
+                            </t-select>
+                        </t-form-item>
+                    </t-form>
+                </div>
+                <!-- 右侧操作按钮区域：搜索和重置按钮 -->
+                <div class="search-form-right">
+                    <t-space>
+                        <!-- 搜索按钮 -->
+                        <t-button theme="primary" @click="handleSearch">
+                            <template #icon><t-icon name="search" /></template>
+                            搜索
                         </t-button>
-                    </t-popconfirm>
-                    <!-- 分配权限按钮 -->
-                    <t-button theme="success" variant="text" size="small" @click="handleAssignPermission(row)">
-                        <template #icon><t-icon name="user" /></template>
-                        分配权限
+                        <!-- 重置按钮 -->
+                        <t-button theme="default" @click="handleReset">
+                            <template #icon><t-icon name="refresh" /></template>
+                            重置
+                        </t-button>
+                    </t-space>
+                </div>
+            </div>
+        </t-card>
+
+        <!-- 数据表格区域 -->
+        <t-card :bordered="false" class="table-card">
+            <!-- 表格头部操作区域 -->
+            <template #header>
+                <div class="button-layout">
+                    <!-- 新增角色按钮 -->
+                    <t-button theme="primary" @click="handleAdd">
+                        <template #icon><t-icon name="add" /></template>
+                        新增
                     </t-button>
-                    <!-- 状态切换按钮 -->
-                    <t-button :theme="row.status === 1 ? 'warning' : 'success'" variant="text" size="small"
-                        @click="handleToggleStatus(row)">
-                        <template #icon><t-icon :name="row.status === 1 ? 'poweroff' : 'check-circle'" /></template>
-                        {{ row.status === 1 ? '禁用' : '启用' }}
+                    <!-- 批量删除按钮：根据选中状态动态显示数量 -->
+                    <t-button theme="danger" :disabled="selectedRowKeys.length === 0" @click="handleBatchDelete">
+                        <template #icon><t-icon name="delete" /></template>
+                        删除 {{ selectedRowKeys.length > 0 ? `(${selectedRowKeys.length})` : '' }}
+                    </t-button>
+                </div>
+            </template>
+            <!-- 角色数据表格：支持多选、分页、排序等功能 -->
+            <t-table :maxHeight="tableMaxHeight" ref="tableRef" :data="tableData" :columns="columns" :loading="loading"
+                :pagination="pagination" :selected-row-keys="selectedRowKeys" row-key="id" active-row-type="single"
+                hover @select-change="handleSelectChange" @page-change="handlePageChange">
+                <!-- 状态列自定义渲染：显示启用/禁用标签 -->
+                <template #status="{ row }">
+                    <t-tag :theme="row.status === 1 ? 'success' : 'danger'" variant="light">
+                        {{ row.status === 1 ? '启用' : '禁用' }}
+                    </t-tag>
+                </template>
+
+                <!-- 操作列自定义渲染：编辑、删除、分配权限、状态切换 -->
+                <template #operation="{ row }">
+                    <t-space>
+                        <!-- 编辑按钮 -->
+                        <t-button theme="primary" variant="text" size="small" @click="handleEdit(row)">
+                            <template #icon><t-icon name="edit" /></template>
+                            编辑
+                        </t-button>
+                        <!-- 删除按钮：带确认弹窗 -->
+                        <t-popconfirm content="确认删除该角色吗？" @confirm="handleDelete(row)">
+                            <t-button theme="danger" variant="text" size="small">
+                                <template #icon><t-icon name="delete" /></template>
+                                删除
+                            </t-button>
+                        </t-popconfirm>
+                        <!-- 分配权限按钮 -->
+                        <t-button theme="success" variant="text" size="small" @click="handleAssignPermission(row)">
+                            <template #icon><t-icon name="user" /></template>
+                            分配权限
+                        </t-button>
+                        <!-- 状态切换按钮 -->
+                        <t-button :theme="row.status === 1 ? 'warning' : 'success'" variant="text" size="small"
+                            @click="handleToggleStatus(row)">
+                            <template #icon><t-icon :name="row.status === 1 ? 'poweroff' : 'check-circle'" /></template>
+                            {{ row.status === 1 ? '禁用' : '启用' }}
+                        </t-button>
+                    </t-space>
+                </template>
+            </t-table>
+        </t-card>
+
+        <!-- 新增/编辑角色弹窗：根据isEdit状态动态显示标题和按钮文本 -->
+        <t-dialog v-model:visible="roleDialogVisible" :header="isEdit ? '编辑角色' : '新增角色'" width="700px"
+            :confirm-btn="null" :cancel-btn="null" class="role-form-dialog">
+            <!-- 角色表单：支持表单验证和提交 -->
+            <t-form ref="roleFormRef" label-align="top" :data="roleForm" :rules="roleFormRules" label-width="100px"
+                @submit="handleRoleSubmit" class="role-form">
+                <!-- 表单网格布局：两列显示 -->
+                <div class="form-grid">
+                    <!-- 角色名称输入 -->
+                    <t-form-item label="角色名称" name="name" class="form-item">
+                        <t-input v-model="roleForm.name" placeholder="请输入角色名称" />
+                    </t-form-item>
+                    <!-- 角色编码输入 -->
+                    <t-form-item label="角色编码" name="code" class="form-item">
+                        <t-input v-model="roleForm.code" placeholder="请输入角色编码" />
+                    </t-form-item>
+
+                    <!-- 状态选择：启用/禁用 -->
+                    <t-form-item label="状态" name="status" class="form-item">
+                        <t-radio-group v-model="roleForm.status">
+                            <t-radio :value="1">启用</t-radio>
+                            <t-radio :value="0">禁用</t-radio>
+                        </t-radio-group>
+                    </t-form-item>
+                </div>
+            </t-form>
+            <!-- 弹窗底部按钮 -->
+            <template #footer>
+                <t-space>
+                    <!-- 取消按钮 -->
+                    <t-button theme="default" @click="roleDialogVisible = false">取消</t-button>
+                    <!-- 提交按钮：根据编辑状态显示不同文本 -->
+                    <t-button theme="primary" @click="handleRoleSubmit" :loading="submitLoading">
+                        {{ isEdit ? '更新' : '创建' }}
                     </t-button>
                 </t-space>
             </template>
-        </t-table>
-    </t-card>
+        </t-dialog>
 
-    <!-- 新增/编辑角色弹窗：根据isEdit状态动态显示标题和按钮文本 -->
-    <t-dialog v-model:visible="roleDialogVisible" :header="isEdit ? '编辑角色' : '新增角色'" width="700px" :confirm-btn="null"
-        :cancel-btn="null" class="role-form-dialog">
-        <!-- 角色表单：支持表单验证和提交 -->
-        <t-form ref="roleFormRef" label-align="top" :data="roleForm" :rules="roleFormRules" label-width="100px"
-            @submit="handleRoleSubmit" class="role-form">
-            <!-- 表单网格布局：两列显示 -->
-            <div class="form-grid">
-                <!-- 角色名称输入 -->
-                <t-form-item label="角色名称" name="name" class="form-item">
-                    <t-input v-model="roleForm.name" placeholder="请输入角色名称" />
-                </t-form-item>
-                <!-- 角色编码输入 -->
-                <t-form-item label="角色编码" name="code" class="form-item">
-                    <t-input v-model="roleForm.code" placeholder="请输入角色编码" />
-                </t-form-item>
-
-                <!-- 状态选择：启用/禁用 -->
-                <t-form-item label="状态" name="status" class="form-item">
-                    <t-radio-group v-model="roleForm.status">
-                        <t-radio :value="1">启用</t-radio>
-                        <t-radio :value="0">禁用</t-radio>
-                    </t-radio-group>
-                </t-form-item>
-            </div>
-        </t-form>
-        <!-- 弹窗底部按钮 -->
-        <template #footer>
-            <t-space>
-                <!-- 取消按钮 -->
-                <t-button theme="default" @click="roleDialogVisible = false">取消</t-button>
-                <!-- 提交按钮：根据编辑状态显示不同文本 -->
-                <t-button theme="primary" @click="handleRoleSubmit" :loading="submitLoading">
-                    {{ isEdit ? '更新' : '创建' }}
-                </t-button>
-            </t-space>
-        </template>
-    </t-dialog>
-
-    <!-- 权限分配组件 -->
-    <PermissionAssignDialog v-model:visible="permissionDialogVisible" :roleInfo="currentRole"
-        :allPermissions="allPermissions" :rolePermissions="currentRolePermissions"
-        @save-success="handlePermissionSaveSuccess" />
-  </div>
+        <!-- 权限分配组件 -->
+        <PermissionAssignDialog v-model:visible="permissionDialogVisible" :roleInfo="currentRole"
+            :allPermissions="allPermissions" :rolePermissions="currentRolePermissions"
+            @save-success="handlePermissionSaveSuccess" />
+    </div>
 </template>
 
 <script setup>
