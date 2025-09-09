@@ -1,11 +1,6 @@
 <template>
   <!-- 页面标签展示区域 -->
-  <div class="page-tags-section" 
-       :class="{
-         'page-tags-section--elevated': appStore.pageTagsElevationVisible,
-         'page-tags-section--flat': !appStore.pageTagsElevationVisible
-       }"
-       v-if="visitedPages.length > 0">
+  <div class="page-tags-section" v-if="visitedPages.length > 0">
     <div class="page-tags-wrapper">
       <!-- 左滚动按钮 -->
       <t-button v-show="showScrollButtons" class="scroll-button scroll-button--left" variant="text" size="small"
@@ -17,7 +12,8 @@
       <div ref="tagsContainer" class="page-tags-container" @scroll="handleScroll">
         <t-tag size="large" v-for="page in visitedPages" :key="page.path"
           :closable="!page.isHome && visitedPages.length > 1" @close="removePageTag(page.path)"
-          @click="navigateToPage(page.path)" :variant="page.path === route.path ? 'primary' : 'default'"
+          @click="navigateToPage(page.path)" @contextmenu="handleContextMenu($event, page)"
+          :variant="page.path === route.path ? 'primary' : 'default'"
           :theme="page.path === route.path ? 'primary' : 'default'" class="page-tag"
           :class="{ 'page-tag--active': page.path === route.path}">
           <template #icon>
@@ -33,6 +29,17 @@
         <t-icon name="chevron-right" />
       </t-button>
     </div>
+
+    <!-- 右键菜单 -->
+    <ContextMenu
+      :visible="contextMenu.visible"
+      :x="contextMenu.x"
+      :y="contextMenu.y"
+      :menu-items="menuItems"
+      :bottom-menu-items="bottomMenuItems"
+      @close="closeContextMenu"
+      @item-click="handleMenuItemClick"
+    />
   </div>
 </template>
 
@@ -42,6 +49,8 @@ import { IconFont } from 'tdesign-icons-vue-next';
 import { useRouter, useRoute } from 'vue-router'
 import { useTabsStore } from '@/store/modules/tabs'
 import { useAppStore } from '@/store/modules/app'
+import ContextMenu from './ContextMenu.vue'
+import { useContextMenu } from '@/utils/useContextMenu.js'
 
 const router = useRouter()
 const route = useRoute()
@@ -52,6 +61,9 @@ const appStore = useAppStore()
 const visitedPages = computed(() => tabsStore.getVisitedPages)
 const tagsContainer = ref(null)
 const showScrollButtons = ref(false)
+
+// 右键菜单相关
+const { contextMenu, showContextMenu, closeContextMenu } = useContextMenu()
 
 // 添加页面到标签列表
 const addPageTag = (path, title, icon) => {
@@ -73,6 +85,81 @@ const navigateToPage = (path) => {
     router.push(path)
   }
 }
+
+// 右键菜单处理函数
+const handleContextMenu = (event, page) => {
+  showContextMenu(event, page)
+}
+
+// 菜单项配置
+const menuItems = computed(() => [
+  {
+    key: 'closeOthers',
+    label: '关闭其他标签页',
+    icon: 'close',
+    disabled: getMenuItemDisabled.value.closeOthers
+  },
+  {
+    key: 'closeLeft',
+    label: '关闭左侧标签页',
+    icon: 'arrow-left',
+    disabled: getMenuItemDisabled.value.closeLeft
+  },
+  {
+    key: 'closeRight',
+    label: '关闭右侧标签页',
+    icon: 'arrow-right',
+    disabled: getMenuItemDisabled.value.closeRight
+  }
+])
+
+const bottomMenuItems = computed(() => [
+  {
+    key: 'closeAll',
+    label: '关闭所有标签页',
+    icon: 'close-circle',
+    disabled: getMenuItemDisabled.value.closeAll
+  }
+])
+
+// 菜单项点击处理
+const handleMenuItemClick = (item) => {
+  const targetPath = contextMenu.value.targetPath
+  
+  switch (item.key) {
+    case 'closeOthers':
+      tabsStore.removeOtherTags(targetPath)
+      break
+    case 'closeLeft':
+      tabsStore.removeLeftTags(targetPath)
+      break
+    case 'closeRight':
+      tabsStore.removeRightTags(targetPath)
+      break
+    case 'closeAll':
+      tabsStore.clearAllTags()
+      // 如果当前页面不是首页，跳转到首页
+      if (route.path !== '/home') {
+        router.push('/home')
+      }
+      break
+  }
+}
+
+// 菜单项禁用状态计算
+const getMenuItemDisabled = computed(() => {
+  const targetPath = contextMenu.value.targetPath
+  const pages = visitedPages.value
+  const targetIndex = pages.findIndex(p => p.path === targetPath)
+  const isHomePage = targetPath === '/home'
+  
+  return {
+    closeOthers: pages.length <= 2 || (isHomePage && pages.length <= 1),
+    closeLeft: targetIndex <= 1, // 首页和第二个标签不能关闭左侧
+    closeRight: targetIndex === pages.length - 1, // 最后一个标签不能关闭右侧
+    closeAll: pages.length <= 1 // 只有首页时不能关闭所有
+  }
+})
 
 // 滚动到当前激活的标签
 const scrollToActiveTag = () => {
@@ -180,6 +267,7 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
+  // 清理工作已由ContextMenu组件处理
 })
 </script>
 
@@ -188,19 +276,12 @@ onUnmounted(() => {
   background: var(--td-bg-color-container);
   padding: 4px 16px;
   position: relative;
-  transition: all 0.3s ease;
-}
-
-/* 抬高效果样式 */
-.page-tags-section--elevated {
-  box-shadow: var(--td-shadow-1), 0 1px 2px rgba(244, 243, 243, 0.05);
   z-index: 10;
 }
 
-/* 平铺效果样式 */
-.page-tags-section--flat {
-  box-shadow: none;
-  z-index: 1;
+/* 动态阴影效果 */
+.page-tags-section {
+  box-shadow: v-bind('appStore.pageTagsShadowEnabled ? "var(--td-shadow-1), 0 1px 2px rgba(0, 0, 0, 0.05)" : "none"');
 }
 
 .page-tags-wrapper {
@@ -278,4 +359,16 @@ onUnmounted(() => {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* 右键菜单样式 */
+.page-tag {
+  user-select: none;
+}
+
+.page-tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 </style>

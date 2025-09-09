@@ -1074,5 +1074,21 @@
 	"gmcycd4": {
 		"zh-cn": "脉冲效果",
 		"en": "Pulse effect"
+	},
+	"5k3eis7": {
+		"zh-cn": "关闭其他标签页",
+		"en": "Close other tabs"
+	},
+	"gqm9x97": {
+		"zh-cn": "关闭左侧标签页",
+		"en": "Close the left TAB"
+	},
+	"fe1sr47": {
+		"zh-cn": "关闭右侧标签页",
+		"en": "Close the TAB on the right"
+	},
+	"382qkb7": {
+		"zh-cn": "关闭所有标签页",
+		"en": "Close all tabs"
 	}
 }
