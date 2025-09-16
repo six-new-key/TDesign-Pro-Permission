@@ -36,7 +36,6 @@ router.beforeEach(async (to, from, next) => {
             next(`/login?redirect=${to.path}`)
           }
         } catch (error) {
-          console.error('获取用户信息失败:', error)
           // 获取用户信息异常，清除token并跳转到登录页
           userStore.logout()
           next(`/login?redirect=${to.path}`)

@@ -432,7 +432,7 @@ const openSearch = () => {
 
 
 
-## 📦 状态管理
+## 状态管理
 
 项目使用 **Pinia** 进行状态管理，配合 `pinia-plugin-persistedstate` 实现状态持久化。
 
@@ -623,6 +623,183 @@ persist: {
   paths: ['title', 'theme', 'sidebarTheme', 'isLocked', 'lockPassword']
 }
 ```
+
+
+
+## TDesign UI 组件封装
+
+项目在 `src/utils/` 目录下封装了基于 TDesign Vue Next 的全局提示组件，提供统一的 API 和项目特定的定制功能。
+
+### 📁 封装文件结构
+
+```
+utils/
+├── message.js          # 全局消息提示封装
+├── notification.js     # 消息通知封装
+├── ui.js              # 统一入口文件
+├── examples.js        # 使用示例
+└── README.md          # 详细使用文档
+```
+
+### 🚀 快速使用
+
+```javascript
+// 推荐：按需导入
+import { Message, Notification } from '@/utils/ui'
+
+// 基础使用
+Message.success('操作成功')
+Message.error('操作失败')
+Message.loading('加载中...')
+
+Notification.success({
+  title: '成功',
+  content: '操作已完成'
+})
+
+Notification.error({
+  title: '错误',
+  content: '操作失败，请重试'
+})
+```
+
+### 📝 Message 全局提示
+
+#### 基础用法
+
+```javascript
+// 字符串形式
+Message.success('操作成功')
+Message.error('操作失败')
+Message.warning('警告信息')
+Message.info('提示信息')
+Message.loading('加载中...')
+Message.question('确认操作？')
+
+// 对象形式
+Message.success({
+  content: '操作成功',
+  duration: 5000,
+  closeBtnProps: true,
+  onClose: () => console.log('消息已关闭')
+})
+```
+
+#### API 参数
+
+| 参数          | 类型     | 默认值 | 说明             |
+| ------------- | -------- | ------ | ---------------- |
+| content       | string   | -      | 消息内容         |
+| duration      | number   | 3000   | 显示时长（毫秒） |
+| closeBtnProps | boolean  | false  | 是否显示关闭按钮 |
+| placement     | string   | 'top'  | 弹出位置         |
+| onClose       | function | -      | 关闭回调函数     |
+
+#### 方法
+
+```javascript
+// 清除所有消息
+Message.clear()
+
+// 关闭指定消息
+const messageInstance = Message.info('消息内容')
+Message.close(messageInstance)
+
+// 清理过期消息记录
+Message.cleanExpired()
+
+// 全局配置
+Message.config({
+  placement: 'top',
+  duration: 3000
+})
+```
+
+### 🔔 Notification 消息通知
+
+#### 基础用法
+
+```javascript
+// 基础通知
+Notification.success({
+  title: '成功',
+  content: '操作已完成'
+})
+
+Notification.error({
+  title: '错误',
+  content: '操作失败，请重试'
+})
+
+Notification.warning({
+  title: '警告',
+  content: '请注意相关风险'
+})
+
+Notification.info({
+  title: '提示',
+  content: '这是一条普通信息'
+})
+
+// 通用方法
+Notification.open({
+  theme: 'success',
+  title: '自定义通知',
+  content: '使用通用方法创建通知'
+})
+```
+
+#### API 参数
+
+| 参数          | 类型     | 默认值      | 说明                                            |
+| ------------- | -------- | ----------- | ----------------------------------------------- |
+| title         | string   | -           | 通知标题                                        |
+| content       | string   | -           | 通知内容                                        |
+| theme         | string   | 'info'      | 通知类型：'info'\|'success'\|'warning'\|'error' |
+| duration      | number   | 3000        | 显示时长（毫秒）                                |
+| placement     | string   | 'top-right' | 弹出位置                                        |
+| closeBtnProps | boolean  | true        | 是否显示关闭按钮                                |
+| onClose       | function | -           | 关闭回调函数                                    |
+| onClick       | function | -           | 点击回调函数                                    |
+
+#### 方法
+
+```javascript
+// 清除所有通知
+Notification.clear()
+
+// 关闭指定通知
+const notificationInstance = Notification.info({ title: '标题', content: '内容' })
+Notification.close(notificationInstance)
+
+// 清理过期通知记录
+Notification.cleanExpired()
+
+// 全局配置
+Notification.config({
+  placement: 'top-right',
+  duration: 4000
+})
+```
+
+
+
+### ✨ 核心特性
+
+- **防重复显示**：自动检测相同内容的消息，避免重复弹出
+- **自动清理**：自动清理过期消息记录，防止内存泄漏
+- **API 一致性**：保持与 TDesign 原生 API 完全一致
+- **项目定制**：增强项目特定功能和配置
+- **完整文档**：提供详细的使用文档和示例代码
+
+### 📋 使用规范
+
+1. **强制使用封装组件**：禁止直接调用 TDesign 原生组件
+2. **统一导入方式**：使用 `@/utils/ui` 统一入口
+3. **合理设置时长**：根据消息重要性配置显示时间
+4. **完整类型支持**：支持 `info`、`success`、`warning`、`error`、`loading`、`question` 等类型
+
+
 
 ## 功能实现详解
 

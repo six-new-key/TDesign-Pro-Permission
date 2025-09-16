@@ -64,7 +64,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserStore } from '@/store/modules/user'
 import { useAppStore } from '@/store/modules/app'
-import { MessagePlugin } from 'tdesign-vue-next'
+import { Message } from '@/utils/ui'
 
 const router = useRouter()
 const userStore = useUserStore()
@@ -191,9 +191,9 @@ const handleUnlock = async () => {
     // 清除校验状态
     clearValidation()
 
-    MessagePlugin.success('解锁成功')
+    Message.success('解锁成功')
   } catch (error) {
-    MessagePlugin.error('解锁失败，请重试')
+    Message.error('解锁失败，请重试')
   } finally {
     isUnlocking.value = false
   }
@@ -215,10 +215,10 @@ const handleClose = async () => {
     // 跳转到登录页面
     router.push('/login')
 
-    MessagePlugin.success('已退出登录')
+    Message.success('已退出登录')
   } catch (error) {
     console.error('退出登录失败:', error)
-    MessagePlugin.error('退出登录失败，请重试')
+    Message.error('退出登录失败，请重试')
   }
 }
 

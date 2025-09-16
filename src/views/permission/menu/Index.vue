@@ -183,7 +183,8 @@
 // Vue 3 Composition API 相关导入
 import { ref, reactive, onMounted, onUnmounted, computed } from 'vue'
 // TDesign 组件库相关导入
-import { MessagePlugin, EnhancedTable } from 'tdesign-vue-next'
+import { EnhancedTable } from 'tdesign-vue-next'
+import { Message } from '@/utils/ui'
 // 菜单管理相关 API 导入
 import {
     queryMenuList,        // 查询菜单列表
@@ -471,7 +472,7 @@ const handleEdit = async (row) => {
 const handleDelete = async (row) => {
     const response = await deleteMenu(row.id)
     if (response.code === 200) {
-        MessagePlugin.success('删除成功')
+        Message.success('删除成功')
         fetchMenuList()
     }
 }
@@ -512,7 +513,7 @@ const handleMenuSubmit = async () => {
         : await addMenu(menuForm)
 
     if (response.code === 200) {
-        MessagePlugin.success(isEdit.value ? '更新成功' : '创建成功')
+        Message.success(isEdit.value ? '更新成功' : '创建成功')
         menuDialogVisible.value = false
         fetchMenuList()
     }
@@ -586,7 +587,7 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /* 搜索卡片样式 */
 .search-card {
     margin-bottom: 16px;

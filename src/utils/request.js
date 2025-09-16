@@ -1,6 +1,6 @@
 //对于axios进行二次封装
 import axios from "axios";
-import { MessagePlugin } from "tdesign-vue-next";
+import { Message } from "@/utils/ui";
 import router from "@/router/index";
 import { useUserStore } from "@/store/modules/user";
 
@@ -29,14 +29,14 @@ httpRequest.interceptors.response.use(
     
     // 只有非200状态码才显示错误信息
     if (code !== 200) {
-      MessagePlugin.error(res.message || '请求失败');
+      Message.error(res.message || '请求失败');
     }
     
     // 401未授权，清除token并跳转登录页
     if (code === 401) {
       const userStore = useUserStore();
       userStore.logout();
-      MessagePlugin.error('登录已过期，请重新登录');
+      Message.error('登录已过期，请重新登录');
       router.push('/login');
     }
     
@@ -52,23 +52,23 @@ httpRequest.interceptors.response.use(
         case 401:
           const userStore = useUserStore();
           userStore.logout();
-          MessagePlugin.error('登录已过期，请重新登录');
+          Message.error('登录已过期，请重新登录');
           router.push('/login');
           break;
         case 403:
-          MessagePlugin.error('没有权限访问');
+          Message.error('没有权限访问');
           break;
         case 404:
-          MessagePlugin.error('请求的资源不存在');
+          Message.error('请求的资源不存在');
           break;
         case 500:
-          MessagePlugin.error('服务器内部错误');
+          Message.error('服务器内部错误');
           break;
         default:
-          MessagePlugin.error('网络错误，请稍后重试');
+          Message.error('网络错误，请稍后重试');
       }
     } else {
-      MessagePlugin.error('网络连接失败，请检查网络');
+      Message.error('网络连接失败，请检查网络');
     }
     
     return Promise.reject(error);

@@ -44,7 +44,7 @@
 import { ref, computed, watch } from 'vue'
 import { useUserStore } from '@/store/modules/user'
 import { useAppStore } from '@/store/modules/app'
-import { MessagePlugin } from 'tdesign-vue-next'
+import { Message } from '@/utils/ui'
 
 const userStore = useUserStore()
 const appStore = useAppStore()
@@ -95,7 +95,7 @@ const handleClose = () => {
 // 处理锁定操作
 const handleLock = async () => {
     if (!password.value.trim()) {
-        MessagePlugin.warning('请输入锁屏密码')
+        Message.warning('请输入锁屏密码')
         return
     }
 
@@ -123,7 +123,7 @@ const handleLock = async () => {
             timestamp: Date.now()
         })
     } catch (error) {
-        MessagePlugin.error('锁定失败，请重试')
+        Message.error('锁定失败，请重试')
     } finally {
         isLocking.value = false
     }

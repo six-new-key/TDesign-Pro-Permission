@@ -238,7 +238,8 @@
 // Vue 3 Composition API 相关导入
 import { ref, reactive, onMounted, onUnmounted, computed } from 'vue'
 // TDesign 组件库相关导入
-import { MessagePlugin, DialogPlugin } from 'tdesign-vue-next'
+import { DialogPlugin } from 'tdesign-vue-next'
+import { Message } from '@/utils/ui'
 // 用户管理相关 API 导入
 import {
     queryUserList,        // 查询用户列表
@@ -497,14 +498,14 @@ const handleEdit = async (row) => {
 const handleDelete = async (row) => {
     const response = await deleteUser(row.id)
     if (response.code === 200) {
-        MessagePlugin.success('删除成功')
+        Message.success('删除成功')
         fetchUserList()
     }
 }
 
 const handleBatchDelete = async () => {
     if (selectedRowKeys.value.length === 0) {
-        MessagePlugin.warning('请选择要删除的用户')
+        Message.warning('请选择要删除的用户')
         return
     }
 
@@ -517,7 +518,7 @@ const handleBatchDelete = async () => {
         onConfirm: async () => {
             const response = await batchDeleteUser(selectedRowKeys.value)
             if (response.code === 200) {
-                MessagePlugin.success('批量删除成功')
+                Message.success('批量删除成功')
                 selectedRowKeys.value = []
                 fetchUserList()
                 dialogInstance.destroy()
@@ -542,7 +543,7 @@ const handleToggleStatus = (row) => {
         onConfirm: async () => {
             const response = await updateUserStatus(row.id)
             if (response.code === 200) {
-                MessagePlugin.success(`${action}成功`)
+                Message.success(`${action}成功`)
                 fetchUserList()
                 dialogInstance.destroy()
             }
@@ -579,7 +580,7 @@ const handleUserSubmit = async () => {
     const response = await apiMethod(userForm)
 
     if (response.code === 200) {
-        MessagePlugin.success(`${isEdit.value ? '更新' : '创建'}成功`)
+        Message.success(`${isEdit.value ? '更新' : '创建'}成功`)
         userDialogVisible.value = false
         fetchUserList()
     }
@@ -610,7 +611,7 @@ const handleSaveRoles = async () => {
     roleSubmitLoading.value = true
     const response = await saveUserRoles(currentUser.value.username, selectedRoles.value)
     if (response.code === 200) {
-        MessagePlugin.success('角色分配成功')
+        Message.success('角色分配成功')
         roleDialogVisible.value = false
     }
     roleSubmitLoading.value = false
@@ -627,7 +628,7 @@ const handlePasswordSubmit = async () => {
     })
 
     if (response.code === 200) {
-        MessagePlugin.success('密码重置成功')
+        Message.success('密码重置成功')
         passwordDialogVisible.value = false
     }
     passwordSubmitLoading.value = false

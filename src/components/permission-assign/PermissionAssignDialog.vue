@@ -58,7 +58,7 @@
 
 <script setup>
 import { ref, computed, watch } from 'vue'
-import { MessagePlugin } from 'tdesign-vue-next'
+import { Message } from '@/utils/ui'
 import { saveRolePermission } from '@/api/role'
 
 // 组件属性
@@ -174,7 +174,7 @@ const handleSave = async () => {
   // 调用保存权限的API
   await saveRolePermission(props.roleInfo.id, selectedPermissionIds.value)
 
-  MessagePlugin.success('权限分配成功')
+  Message.success('权限分配成功')
   emit('save-success')
   handleCancel()
 

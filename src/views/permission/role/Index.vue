@@ -151,7 +151,8 @@
 // Vue 3 Composition API 相关导入
 import { ref, reactive, onMounted, onUnmounted, computed } from 'vue'
 // TDesign 组件库相关导入
-import { MessagePlugin, DialogPlugin } from 'tdesign-vue-next'
+import { DialogPlugin } from 'tdesign-vue-next'
+import { Message } from '@/utils/ui'
 // 角色管理相关 API 导入
 import {
     addRole,                    // 新增角色
@@ -298,7 +299,7 @@ const loadAllPermissions = async () => {
         }
     } catch (error) {
         console.error('加载权限数据失败:', error)
-        MessagePlugin.error('加载权限数据失败')
+        Message.error('加载权限数据失败')
     }
 }
 
@@ -376,7 +377,7 @@ const handleEdit = async (row) => {
 const handleDelete = async (row) => {
     const response = await deleteRole(row.id)
     if (response.code === 200) {
-        MessagePlugin.success('删除成功')
+        Message.success('删除成功')
         fetchRoleList()
     }
 }
@@ -387,7 +388,7 @@ const handleDelete = async (row) => {
  */
 const handleBatchDelete = async () => {
     if (selectedRowKeys.value.length === 0) {
-        MessagePlugin.warning('请选择要删除的角色')
+        Message.warning('请选择要删除的角色')
         return
     }
 
@@ -400,7 +401,7 @@ const handleBatchDelete = async () => {
         onConfirm: async () => {
             const response = await batchDeleteRole(selectedRowKeys.value)
             if (response.code === 200) {
-                MessagePlugin.success('批量删除成功')
+                Message.success('批量删除成功')
                 selectedRowKeys.value = []
                 fetchRoleList()
                 dialogInstance.destroy()
@@ -429,7 +430,7 @@ const handleToggleStatus = (row) => {
         onConfirm: async () => {
             const response = await updateRoleStatus(row.id)
             if (response.code === 200) {
-                MessagePlugin.success(`${action}成功`)
+                Message.success(`${action}成功`)
                 fetchRoleList()
                 dialogInstance.destroy()
             }
@@ -454,7 +455,7 @@ const handleAssignPermission = async (row) => {
         }
     } catch (error) {
         console.error('获取角色权限数据失败:', error)
-        MessagePlugin.error('获取角色权限数据失败')
+        Message.error('获取角色权限数据失败')
     }
 }
 
@@ -479,7 +480,7 @@ const handleRoleSubmit = async () => {
     const response = await apiMethod(roleForm)
 
     if (response.code === 200) {
-        MessagePlugin.success(`${isEdit.value ? '更新' : '创建'}成功`)
+        Message.success(`${isEdit.value ? '更新' : '创建'}成功`)
         roleDialogVisible.value = false
         fetchRoleList()
     }

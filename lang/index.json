@@ -1106,5 +1106,25 @@
 	"amniw34": {
 		"zh-cn": "公告管理",
 		"en": "Announcement Management"
+	},
+	"tyus9fb": {
+		"zh-cn": " 抱歉，页面不见了～ ",
+		"en": "Sorry, the page is gone ~"
+	},
+	"iijhd54": {
+		"zh-cn": "返回首页",
+		"en": "Return to the homepage"
+	},
+	"isauzb5": {
+		"zh-cn": "测试msg",
+		"en": "Test msg"
+	},
+	"ntjd1xe": {
+		"zh-cn": "测试notification",
+		"en": "Test notification"
+	},
+	"wwg9io6": {
+		"zh-cn": "表单提交成功",
+		"en": "The form was submitted successfully."
 	}
 }

@@ -79,7 +79,7 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
-import { MessagePlugin } from 'tdesign-vue-next'
+import { Message } from '@/utils/ui'
 import { useRouter, useRoute } from 'vue-router'
 import { useUserStore } from '@/store/modules/user'
 import {settings} from "@/settings"
@@ -147,7 +147,7 @@ const handleLogin = async () => {
       const result = await userStore.login(loginData)
       
       if (result.success) {
-        MessagePlugin.success('登录成功')
+        Message.success('登录成功')
         
         // 处理记住账号
         if (rememberMe.value) {
@@ -160,12 +160,12 @@ const handleLogin = async () => {
         const redirect = route.query.redirect || '/'
         router.push(redirect)
       } else {
-        MessagePlugin.error(result.message || '登录失败')
+        Message.error(result.message || '登录失败')
       }
     }
   } catch (error) {
     console.error('登录失败:', error)
-    MessagePlugin.error('登录过程中发生错误，请稍后重试')
+    Message.error('登录过程中发生错误，请稍后重试')
   } finally {
     loginLoading.value = false
   }
