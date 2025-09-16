@@ -1090,5 +1090,21 @@
 	"382qkb7": {
 		"zh-cn": "关闭所有标签页",
 		"en": "Close all tabs"
+	},
+	"i41z031z": {
+		"zh-cn": "\n  #nprogress .bar {\n    background: #0052d9 !important; // 使用主题蓝色\n  }\n",
+		"en": "#nprogress .bar {\nbackground: #0052d9 ! important; // Use theme blue\n}"
+	},
+	"eddyyn2a": {
+		"zh-cn": "\n    #nprogress .bar {\n      background: #0052d9 !important; /* 使用主题蓝色 */\n    }\n  ",
+		"en": "#nprogress .bar {\nbackground: #0052d9 ! important; /* Use theme blue */\n}"
+	},
+	"d9axsn4": {
+		"zh-cn": "日志管理",
+		"en": "Log Management"
+	},
+	"amniw34": {
+		"zh-cn": "公告管理",
+		"en": "Announcement Management"
 	}
 }

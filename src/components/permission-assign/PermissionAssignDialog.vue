@@ -194,7 +194,7 @@ const handleCancel = () => {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 /* 权限分配对话框样式 */
 .permission-dialog {
   .permission-header {

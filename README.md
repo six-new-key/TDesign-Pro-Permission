@@ -14,6 +14,10 @@
 - 🔐 **权限管理**：完整的用户权限控制系统
 - 💾 **状态持久化**：基于 Pinia 的状态管理和持久化
 - 🎯 **组件化开发**：高度模块化的组件架构
+- 🌐 **多语言支持**：系统中英文语言切换功能
+- 🎬 **动画效果**：集成 animate.css 动画效果库
+- 🖱️ **右键菜单**：页签右键快捷操作菜单
+- ⏳ **进度条配置**：独立的进度条样式和行为配置
 
 ## 核心技术栈
 
@@ -112,7 +116,7 @@ yarn preview
 
 ### 环境变量
 
-#### 开发环境 (.env.development)
+ **开发环境 (.env.development)**
 
 ```env
 NODE_ENV = 'development'
@@ -120,7 +124,7 @@ VITE_APP_BASE_API = '/api'
 VITE_DEV_SERVE = 'http://localhost:9101'
 ```
 
-#### 生产环境 (.env.production)
+ **生产环境 (.env.production)**
 
 ```env
 NODE_ENV = 'production'
@@ -738,7 +742,7 @@ persist: {
 
 ### 7. ECharts 图表系统详解
 
-####  **ECharts 集成配置**
+**ECharts 集成配置**
 
 **位置**: `src/echarts/index.js`
 
@@ -756,7 +760,7 @@ export default echarts
 
 
 
-#### 图表组件使用指南
+**图表组件使用指南**
 
 1. **引入 ECharts**:
 
@@ -817,6 +821,261 @@ onUnmounted(() => {
   chartInstance?.dispose()
 })
 ```
+
+### 8. 多语言切换功能
+
+**文件位置**: `src/layouts/sidebar/components/Header.vue`
+
+**功能描述**: 在界面右上角添加语言选择器，支持用户在中文和英文之间切换系统语言，提供更好的国际化体验。
+
+**主要特性**:
+
+- 🌐 支持中英文双语切换
+- 🎯 下拉菜单形式的语言选择器
+- 💾 语言选择状态持久化保存
+- 🔄 实时切换，无需刷新页面
+
+**使用方法**:
+
+1. 点击界面右上角的语言切换按钮（翻译图标）
+2. 在下拉菜单中选择所需语言（中文/English）
+3. 系统界面将立即切换到选定语言
+
+**配置说明**:
+
+```javascript
+// 语言配置选项
+const langOptions = [
+  { content: '中文', value: 'zh-CN' },
+  { content: 'English', value: 'en-US' }
+]
+
+// 语言切换实现
+<t-dropdown :options="langOptions" :min-column-width="90">
+  <t-button theme="default" shape="square" variant="text">
+    <template #icon>
+      <IconFont name="translate-1" size="14px" />
+    </template>
+  </t-button>
+</t-dropdown>
+```
+
+**技术实现**:
+
+- 基于 Vue I18n 国际化框架
+- 语言资源文件存储在 `lang/` 目录
+- 支持动态加载语言包
+- 与 TDesign 组件库的国际化无缝集成
+
+### 9. 页面动画效果系统
+
+**文件位置**: `src/components/custom/ThemeDrawer.vue`
+
+**功能描述**: 集成 animate.css 动画效果库，为页面过渡和组件交互添加多种动画效果，显著提升用户体验和界面的视觉吸引力。
+
+**主要特性**:
+
+- 🎬 多种页面过渡动画效果
+- ⚙️ 可视化动画配置界面
+- 🎯 支持动画预览和实时切换
+- 💾 动画设置持久化保存
+
+**动画类型**:
+
+- **淡入淡出**: `fadeIn` / `fadeOut` 效果
+- **滑动**: `slideInLeft` / `slideInRight` 效果
+- **缩放**: `zoomIn` / `zoomOut` 效果
+- **弹跳**: `bounceIn` / `bounceOut` 效果
+- **旋转**: `rotateIn` / `rotateOut` 效果
+
+**使用方法**:
+
+1. 点击右上角设置按钮打开主题配置抽屉
+2. 在"页面动效"部分选择所需的动画效果
+3. 点击动画选项即可实时预览效果
+4. 选择后的动画将应用到页面切换过渡中
+
+**配置说明**:
+
+```javascript
+// 动画配置选项
+const pageAnimations = [
+  { label: '淡入淡出', value: 'fade', icon: 'layers' },
+  { label: '左滑进入', value: 'slide-left', icon: 'arrow-left' },
+  { label: '右滑进入', value: 'slide-right', icon: 'arrow-right' },
+  { label: '缩放效果', value: 'zoom', icon: 'fullscreen-expand' },
+  { label: '弹跳效果', value: 'bounce', icon: 'jump' }
+]
+
+// 动画切换处理
+const handleAnimationChange = (animation) => {
+  appStore.setPageAnimation(animation)
+  // 应用动画到路由过渡
+}
+```
+
+**技术实现**:
+
+- 基于 animate.css 动画库
+- Vue Router 过渡动画集成
+- CSS 变量动态控制动画参数
+- 支持自定义动画持续时间和缓动函数
+
+### 10. 页签右键菜单功能
+
+**文件位置**: `src/components/page-tags/PageTags.vue`
+
+**功能描述**: 为页面标签添加右键快捷操作菜单，提供丰富的标签管理功能，让用户能够更高效地管理多个打开的页面标签。
+
+**主要特性**:
+
+- 🖱️ 右键点击页签显示上下文菜单
+- 🎯 多种标签操作选项
+- ⚡ 快捷键支持
+- 🔒 智能菜单项状态控制
+
+**菜单功能**:
+
+- **刷新页面**: 重新加载当前页签内容
+- **关闭标签**: 关闭当前选中的页签
+- **关闭其他**: 关闭除当前页签外的所有页签
+- **关闭左侧**: 关闭当前页签左侧的所有页签
+- **关闭右侧**: 关闭当前页签右侧的所有页签
+- **关闭全部**: 关闭所有页签（首页除外）
+- **固定标签**: 将页签设为固定状态
+- **在新窗口打开**: 在新浏览器窗口中打开页面
+
+**使用方法**:
+
+1. 在任意页面标签上点击鼠标右键
+2. 从弹出的上下文菜单中选择所需操作
+3. 菜单会根据当前状态智能显示可用选项
+4. 支持键盘快捷键操作（如 Ctrl+W 关闭标签）
+
+**配置说明**:
+
+```javascript
+// 右键菜单配置
+const menuItems = [
+  { label: '刷新页面', value: 'refresh', icon: 'refresh' },
+  { label: '关闭标签', value: 'close', icon: 'close' },
+  { label: '关闭其他', value: 'close-others', icon: 'close-circle' },
+  { label: '关闭左侧', value: 'close-left', icon: 'arrow-left' },
+  { label: '关闭右侧', value: 'close-right', icon: 'arrow-right' }
+]
+
+const bottomMenuItems = [
+  { label: '关闭全部', value: 'close-all', icon: 'close-rectangle' },
+  { label: '固定标签', value: 'pin', icon: 'pin' }
+]
+
+// 右键菜单组件使用
+<ContextMenu
+  :visible="contextMenu.visible"
+  :x="contextMenu.x"
+  :y="contextMenu.y"
+  :menu-items="menuItems"
+  :bottom-menu-items="bottomMenuItems"
+  @close="closeContextMenu"
+  @item-click="handleMenuItemClick"
+/>
+```
+
+**技术实现**:
+
+- 自定义 ContextMenu 组件
+- 鼠标位置计算和菜单定位
+- 点击外部区域自动关闭
+- 与页签状态管理系统集成
+
+### 11. 进度条配置系统
+
+**文件位置**: `src/utils/nprogress.js`
+
+**功能描述**: 将 NProgress 进度条配置独立为模块化配置文件，提供统一的进度条样式和行为管理，支持自定义配置和主题适配。
+
+**主要特性**:
+
+- ⚙️ 模块化配置管理
+- 🎨 自定义样式支持
+- 🔧 灵活的参数配置
+- 🎯 统一的初始化接口
+
+**配置选项**:
+
+- **showSpinner**: 是否显示加载图标（默认: false）
+- **minimum**: 最小百分比（默认: 0.2）
+- **easing**: 动画方式（默认: 'ease'）
+- **speed**: 递增进度条的速度（默认: 500ms）
+- **trickleSpeed**: 递增速度（默认: 200ms）
+- **parent**: 指定父容器（默认: 'body'）
+
+**使用方法**:
+
+```javascript
+// 导入配置模块
+import { NProgress, initNProgress } from '@/utils/nprogress'
+
+// 初始化进度条配置
+initNProgress()
+
+// 在路由守卫中使用
+router.beforeEach(() => {
+  NProgress.start()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+```
+
+**配置说明**:
+
+```javascript
+// 进度条基础配置
+const configureNProgress = () => {
+  NProgress.configure({ 
+    showSpinner: false,     // 不显示加载图标
+    minimum: 0.2,          // 最小百分比
+    easing: 'ease',        // 动画方式
+    speed: 500,            // 递增进度条的速度
+    trickleSpeed: 200,     // 递增速度
+    parent: 'body'         // 指定父容器
+  })
+}
+
+// 自定义样式配置
+const setNProgressStyle = () => {
+  const style = document.createElement('style')
+  style.textContent = `
+    #nprogress .bar {
+      background: #0052d9 !important; /* 使用主题蓝色 */
+    }
+  `
+  document.head.appendChild(style)
+}
+
+// 模块导出
+export { NProgress, initNProgress, configureNProgress, setNProgressStyle }
+export default initNProgress
+```
+
+**技术实现**:
+
+- 基于 NProgress 库的二次封装
+- 支持主题色自动适配
+- 提供多种导出方式（命名导出 + 默认导出）
+- 与路由系统无缝集成
+- 支持动态样式注入
+
+**优势特点**:
+
+- **模块化设计**: 配置代码独立封装，便于维护和复用
+- **功能完整**: 保持原有的所有配置选项和自定义样式
+- **导入简洁**: 其他模块可以直接导入配置好的实例
+- **主题适配**: 进度条颜色自动适配系统主题
+
+
 
 ## 权限管理架构
 
@@ -1003,11 +1262,11 @@ import {
 
 ## 权限控制机制
 
-### 1. 路由权限控制
+### 路由权限控制
 
 **文件位置**: `src/permission.js`
 
-#### 路由守卫流程
+**路由守卫流程**
 
 ```javascript
 // 路由前置守卫逻辑
@@ -1018,7 +1277,7 @@ import {
 5. 权限验证通过后放行
 ```
 
-#### 路由分类
+**路由分类**
 
 **常量路由** (`constantRoutes`):
 

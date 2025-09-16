@@ -165,7 +165,7 @@ import {
 // 菜单权限相关 API 导入
 import { queryMenuListWithPermission, queryRoleMenuList } from '@/api/menu'
 // 权限分配组件导入
-import PermissionAssignDialog from '@/components/permission-assign'
+import PermissionAssignDialog from '@/components/permission-assign/PermissionAssignDialog.vue'
 
 // ==================== 响应式数据定义 ====================
 // 加载状态控制

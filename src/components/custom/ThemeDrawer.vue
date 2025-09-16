@@ -1,5 +1,5 @@
 <template>
-    <t-drawer v-model:visible="visible" title="主题设置" placement="right" size="320px" :show-overlay="true"
+    <t-drawer v-model:visible="visible" title="主题设置" placement="right" size="360px" :show-overlay="true"
         :close-on-overlay-click="true" :footer="false" class="theme-drawer">
         <div class="theme-drawer-content">
             <!-- 主题模式设置 -->

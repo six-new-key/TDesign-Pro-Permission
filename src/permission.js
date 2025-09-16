@@ -1,16 +1,10 @@
 import router from './router/index'
 import { useUserStore } from '@/store/modules/user'
 import { useAppStore } from '@/store/modules/app'
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
+import { NProgress, initNProgress } from '@/utils/nprogress'
 
-// 配置NProgress
-NProgress.configure({ 
-  showSpinner: false, // 不显示加载图标
-  minimum: 0.2, // 最小百分比
-  easing: 'ease', // 动画方式
-  speed: 500 // 递增进度条的速度
-})
+// 初始化NProgress配置
+initNProgress()
 
 // 白名单路由，不需要登录即可访问
 const whiteList = ['/login', '/register', '/404', '/403']
