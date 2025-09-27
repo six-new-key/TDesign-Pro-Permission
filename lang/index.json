@@ -1126,5 +1126,21 @@
 	"wwg9io6": {
 		"zh-cn": "表单提交成功",
 		"en": "The form was submitted successfully."
+	},
+	"arekag4": {
+		"zh-cn": "切换主题",
+		"en": ""
+	},
+	"jwt87o28": {
+		"zh-cn": "\n    #nprogress .bar {\n      background: var() !important; /* 使用主题蓝色 */\n    }\n  ",
+		"en": "#nprogress .bar {\nbackground: var() ! important; /* Use theme blue */\n}"
+	},
+	"dv772k2o": {
+		"zh-cn": "\n    #nprogress .bar {\n      background: var(--td-brand-color) !important; /* 使用主题蓝色 */\n    }\n  ",
+		"en": "#nprogress .bar {\nbackground: var(--td-brand-color) ! important; /* Use theme blue */\n}"
+	},
+	"jjipx926": {
+		"zh-cn": "\n    #nprogress .bar {\n      background: red !important; /* 使用主题蓝色 */\n    }\n  ",
+		"en": "#nprogress .bar {\nbackground: red ! important; /* Use theme blue */\n}"
 	}
 }

@@ -23,7 +23,7 @@ const setNProgressStyle = () => {
   const style = document.createElement('style')
   style.textContent = `
     #nprogress .bar {
-      background: #0052d9 !important; /* 使用主题蓝色 */
+      background: var(--td-brand-color) !important; /* 使用主题蓝色 */
     }
   `
   document.head.appendChild(style)

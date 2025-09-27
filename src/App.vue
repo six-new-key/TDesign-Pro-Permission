@@ -20,5 +20,15 @@ onMounted(() => {
 })
 </script>
 
-<style scoped>
+<style>
+/* 配合主题切换动效使用 */
+::view-transition-new(root),
+::view-transition-old(root) {
+  animation: none !important;
+  /* transform: none !important; */
+}
+
+[theme-mode="dark"]::view-transition-old(root) {
+  z-index: 99;
+}
 </style>

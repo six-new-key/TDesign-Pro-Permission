@@ -33,6 +33,15 @@
             </t-button>
           </t-tooltip>
 
+          <!-- 主题切换按钮 -->
+          <t-tooltip content="切换主题">
+            <t-button theme="default" shape="square" variant="text" @click="handleThemeChange">
+              <template #icon>
+                <IconFont :name="appStore.themeMode === 'dark' ? 'sunny' : 'moon'" size="14px" />
+              </template>
+            </t-button>
+          </t-tooltip>
+
           <!-- 语言切换，使用下拉菜单 -->
           <t-dropdown :options="langOptions" :min-column-width="90">
             <t-button theme="default" shape="square" variant="text">
@@ -73,6 +82,7 @@ import { useAppStore } from '@/store/modules/app'
 import PageTags from '@/components/page-tags/PageTags.vue'
 import SearchDialog from '@/components/search-dialog/SearchDialog.vue'
 import UserDropdown from '@/components/custom/UserDropdown.vue'
+import { themeChangeWithAnimation } from '@/utils/theme'
 
 const route = useRoute()
 const appStore = useAppStore()
@@ -154,6 +164,13 @@ const langOptions = ref([
 const changeLang = (value) => {
   appStore.setLang(value)
   appStore.langChange(value)
+}
+
+// 主题切换
+const handleThemeChange = (e) => {
+  themeChangeWithAnimation(e, () => {
+    appStore.setThemeMode(appStore.themeMode === 'dark' ? 'light' : 'dark')
+  })
 }
 
 // 打开搜索对话框

@@ -23,6 +23,62 @@ export function setThemeMode(mode) {
 }
 
 /**
+ * 主题切换动画
+ * @param {Event} e - 鼠标点击事件
+ * @param {Function} themeChangeCallback - 主题切换回调函数
+ * @param {Object} options - 动画选项
+ * @param {number} options.duration - 动画持续时间，默认400ms
+ */
+export function themeChangeWithAnimation(e, themeChangeCallback, options = {}) {
+  const { duration = 500 } = options
+
+  // 检查浏览器是否支持 View Transition API
+  if (!document.startViewTransition) {
+    // 如果不支持，直接执行主题切换
+    themeChangeCallback()
+    return
+  }
+
+  // 获取到 transition API 实例
+  const transition = document.startViewTransition(() => {
+    themeChangeCallback()
+  })
+
+  // 在 transition.ready 的 Promise 完成后，执行自定义动画
+  transition.ready.then(() => {
+    // 由于我们要从鼠标点击的位置开始做动画，所以我们需要先获取到鼠标的位置
+    const { clientX, clientY } = e
+
+    // 计算半径，以鼠标点击的位置为圆心，到四个角的距离中最大的那个作为半径
+    const radius = Math.hypot(
+      Math.max(clientX, innerWidth - clientX),
+      Math.max(clientY, innerHeight - clientY)
+    )
+    const clipPath = [
+      `circle(0% at ${clientX}px ${clientY}px)`,
+      `circle(${radius}px at ${clientX}px ${clientY}px)`
+    ]
+    const isDark = document.documentElement.getAttribute('theme-mode') === 'dark'
+    
+    // 自定义动画
+    document.documentElement.animate(
+      {
+        // 如果要切换到暗色主题，我们在过渡的时候从半径 100% 的圆开始，到 0% 的圆结束
+        clipPath: isDark ? clipPath.reverse() : clipPath
+      },
+      {
+        duration,
+        fill: 'both',
+        // 如果要切换到暗色主题，我们应该裁剪 view-transition-old(root) 的内容
+        pseudoElement: isDark
+          ? '::view-transition-old(root)'
+          : '::view-transition-new(root)'
+      }
+    )
+  })
+}
+
+/**
  * 应用主题配置
  * @param {Object} theme - 主题配置
  * @param {string} theme.mode - 主题模式 ('light' | 'dark')
