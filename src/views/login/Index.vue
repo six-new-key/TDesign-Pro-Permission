@@ -28,8 +28,8 @@
         </div>
 
         <t-form ref="formRef" :data="formData" :rules="formRules" class="login-form" @submit="handleLogin">
-          <t-form-item name="username">
-            <t-input v-model="formData.username" placeholder="请输入用户名" size="large" clearable>
+          <t-form-item name="userName">
+            <t-input v-model="formData.userName" placeholder="请输入用户名" size="large" clearable>
               <template #prefix-icon>
                 <t-icon name="user" />
               </template>
@@ -91,14 +91,14 @@ const userStore = useUserStore()
 
 // 表单数据
 const formData = reactive({
-  username: 'admin',
+  userName: 'admin',
   password: '123456',
   captcha: ''
 })
 
 // 表单验证规则
 const formRules = {
-  username: [
+  userName: [
     { required: true, message: '请输入用户名', type: 'error' }
   ],
   password: [
@@ -123,9 +123,9 @@ onMounted(() => {
   }
   
   // 恢复记住的用户名
-  const rememberedUsername = localStorage.getItem('rememberedUsername')
-  if (rememberedUsername) {
-    formData.username = rememberedUsername
+  const remembereduserName = localStorage.getItem('remembereduserName')
+  if (remembereduserName) {
+    formData.userName = remembereduserName
     rememberMe.value = true
   }
 })
@@ -139,7 +139,7 @@ const handleLogin = async () => {
 
       // 调用登录API
       const loginData = {
-        username: formData.username,
+        userName: formData.userName,
         password: formData.password,
         captcha: formData.captcha
       }
@@ -151,9 +151,9 @@ const handleLogin = async () => {
         
         // 处理记住账号
         if (rememberMe.value) {
-          localStorage.setItem('rememberedUsername', formData.username)
+          localStorage.setItem('remembereduserName', formData.userName)
         } else {
-          localStorage.removeItem('rememberedUsername')
+          localStorage.removeItem('remembereduserName')
         }
         
         // 获取重定向路径

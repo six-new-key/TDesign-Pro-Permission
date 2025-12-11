@@ -8,8 +8,8 @@
             <div class="search-form-left">
                 <t-form ref="searchFormRef" :data="searchForm" layout="inline" :label-width="0">
                     <!-- 用户名搜索 -->
-                    <t-form-item name="username">
-                        <t-input v-model="searchForm.username" placeholder="请输入用户名" clearable style="width: 200px" />
+                    <t-form-item name="userName">
+                        <t-input v-model="searchForm.userName" placeholder="请输入用户名" clearable style="width: 200px" />
                     </t-form-item>
                     <!-- 手机号搜索 -->
                     <t-form-item name="phone">
@@ -105,8 +105,8 @@
             <!-- 表单网格布局：两列显示 -->
             <div class="form-grid">
                 <!-- 用户名输入：编辑时禁用 -->
-                <t-form-item label="用户名" name="username" class="form-item">
-                    <t-input v-model="userForm.username" placeholder="请输入用户名" :disabled="isEdit" />
+                <t-form-item label="用户名" name="userName" class="form-item">
+                    <t-input v-model="userForm.userName" placeholder="请输入用户名" :disabled="isEdit" />
                 </t-form-item>
                 <!-- 邮箱输入 -->
                 <t-form-item label="邮箱" name="email" class="form-item">
@@ -150,7 +150,7 @@
     <t-dialog v-model:visible="roleDialogVisible" header="分配角色" width="800px" :confirm-btn="null" :cancel-btn="null">
         <div class="role-assign-content">
             <p class="assign-user-info">
-                为用户 <strong>{{ currentUser.username }}</strong> 分配角色：
+                为用户 <strong>{{ currentUser.userName }}</strong> 分配角色：
             </p>
             <div class="role-layout">
                 <div class="role-section">
@@ -194,7 +194,7 @@
     <t-dialog v-model:visible="passwordDialogVisible" header="重置密码" width="500px" :confirm-btn="null" :cancel-btn="null"
         class="password-reset-dialog">
         <div class="user-info-section">
-            <h4 class="user-title">为用户<span class="username-display">{{ currentUser.username }}</span>重置密码</h4>
+            <h4 class="user-title">为用户<span class="username-display">{{ currentUser.userName }}</span>重置密码</h4>
         </div>
 
         <t-form ref="passwordFormRef" :data="passwordForm" :rules="passwordFormRules" label-align="top"
@@ -290,7 +290,7 @@ const passwordFormRef = ref()                 // 密码表单引用
 // ==================== 表单数据定义 ====================
 // 搜索表单数据
 const searchForm = reactive({
-    username: '',    // 用户名搜索条件
+    userName: '',    // 用户名搜索条件
     phone: '',       // 手机号搜索条件
     status: ''       // 状态搜索条件（1-启用，0-禁用）
 })
@@ -298,7 +298,7 @@ const searchForm = reactive({
 // 用户表单数据
 const userForm = reactive({
     id: null,              // 用户ID（编辑时使用）
-    username: '',          // 用户名
+    userName: '',          // 用户名
     email: '',             // 邮箱
     phone: '',             // 手机号
     password: '',          // 密码（新增时使用）
@@ -308,7 +308,7 @@ const userForm = reactive({
 
 // 密码重置表单数据
 const passwordForm = reactive({
-    username: '',          // 用户名（显示用）
+    userName: '',          // 用户名（显示用）
     newPassword: '',       // 新密码
     confirmPassword: ''    // 确认新密码
 })
@@ -337,7 +337,7 @@ const columns = [
         fixed: 'left'
     },
     {
-        colKey: 'username',     // 用户名列
+        colKey: 'userName',     // 用户名列
         title: '用户名',
         width: 140
     },
@@ -374,7 +374,7 @@ const columns = [
 // ==================== 表单验证规则 ====================
 // 用户表单验证规则
 const userFormRules = {
-    username: [
+    userName: [
         { required: true, message: '用户名不能为空' },
         { min: 3, max: 20, message: '用户名长度为3-20个字符' }
     ],
@@ -429,7 +429,7 @@ const fetchUserList = async () => {
     loading.value = true
     // 构建请求参数，空字段设置为空字符串
     const params = {
-        username: searchForm.username ? searchForm.username.trim() : '',
+        userName: searchForm.userName ? searchForm.userName.trim() : '',
         phone: searchForm.phone ? searchForm.phone.trim() : '',
         status: searchForm.status !== '' ? Number(searchForm.status) : ''
     }
@@ -468,7 +468,7 @@ const handleSearch = () => {
  */
 const handleReset = () => {
     Object.assign(searchForm, {
-        username: '',
+        userName: '',
         phone: '',
         status: ''
     })
@@ -536,7 +536,7 @@ const handleToggleStatus = (row) => {
 
     const dialogInstance = DialogPlugin.confirm({
         header: '确认操作',
-        body: `确定要${action}用户 "${row.username}" 吗？`,
+        body: `确定要${action}用户 "${row.userName}" 吗？`,
         confirmBtn: '确定',
         cancelBtn: '取消',
         theme: theme,
@@ -565,7 +565,7 @@ const handleAssignRole = async (row) => {
 
 const handleResetPassword = (row) => {
     currentUser.value = row
-    passwordForm.username = row.username
+    passwordForm.userName = row.userName
     passwordForm.newPassword = ''
     passwordForm.confirmPassword = ''
     passwordDialogVisible.value = true
@@ -609,7 +609,7 @@ const removeRole = (role) => {
 
 const handleSaveRoles = async () => {
     roleSubmitLoading.value = true
-    const response = await saveUserRoles(currentUser.value.username, selectedRoles.value)
+    const response = await saveUserRoles(currentUser.value.userName, selectedRoles.value)
     if (response.code === 200) {
         Message.success('角色分配成功')
         roleDialogVisible.value = false
@@ -654,7 +654,7 @@ const handlePageChange = (pageInfo) => {
 const resetUserForm = () => {
     Object.assign(userForm, {
         id: null,
-        username: '',
+        userName: '',
         email: '',
         phone: '',
         password: '',
