@@ -1146,5 +1146,13 @@
 	"rl4ob26": {
 		"zh-cn": "当前模式: ",
 		"en": ""
+	},
+	"ie1p9h4": {
+		"zh-cn": "路由名称",
+		"en": "Route name"
+	},
+	"4lfvt1k": {
+		"zh-cn": "请输入组件路径：/xxx/xxx/xxx",
+		"en": "Please enter the component path: /xxx/xxx/xxx"
 	}
 }

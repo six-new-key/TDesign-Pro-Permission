@@ -65,7 +65,7 @@
         </template>
         <!-- 菜单数据表格：树形结构显示 -->
         <t-enhanced-table :expanded-tree-nodes="expandedTreeNodes"
-            :table-content-width="tableLayout === 'fixed' ? undefined : '1300px'" :maxHeight="tableMaxHeight"
+            :table-content-width="tableLayout === 'fixed' ? undefined : '1600px'" :maxHeight="tableMaxHeight"
             ref="tableRef" :data="tableData" :columns="columns" :loading="loading" :tree="{ childrenKey: 'children' }"
             row-key="id" hover @expanded-tree-nodes-change="handleExpandedTreeNodesChange" active-row-type="single">
             <!-- 菜单类型列自定义渲染 -->
@@ -148,7 +148,7 @@
                 </t-form-item>
                 <!-- 组件路径（菜单类型显示，按钮类型不显示） -->
                 <t-form-item v-if="menuForm.type === 1" label="组件路径" name="component" class="form-item">
-                    <t-input v-model="menuForm.component" placeholder="请输入组件路径" />
+                    <t-input v-model="menuForm.component" placeholder="请输入组件路径：/xxx/xxx/xxx" />
                 </t-form-item>
                 <!-- 权限标识（按钮类型显示） -->
                 <t-form-item v-if="menuForm.type === 2" label="权限标识" name="permission" class="form-item">
@@ -223,7 +223,7 @@ const menuFormRef = ref()                     // 菜单表单引用
 // ==================== 计算属性 ====================
 // 动态计算表格最大高度
 const tableMaxHeight = computed(() => {
-    return isFullscreen.value ? undefined : '475px'
+    return isFullscreen.value ? undefined : '620px'
 })
 
 // ==================== 表单数据定义 ====================
@@ -262,7 +262,7 @@ const columns = [
     },
     {
         colKey: 'name',         // 菜单名称（英文）列
-        title: '菜单名称',
+        title: '路由名称',
         width: 150
     },
     {
