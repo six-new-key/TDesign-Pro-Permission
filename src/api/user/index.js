@@ -60,14 +60,6 @@ export const updateUserStatus = (id) => {
   })
 }
 
-// 删除用户
-export const deleteUser = (id) => {
-  return httpRequest({
-    url: `/user/delete/${id}`,
-    method: 'DELETE'
-  })
-}
-
 // 批量删除用户
 export const batchDeleteUser = (ids) => {
   return httpRequest({

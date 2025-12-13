@@ -26,15 +26,6 @@ export const updateRoleStatus = (id) => {
   })
 }
 
-// 删除角色
-export const deleteRole = (id) => {
-  return httpRequest({
-    url: '/role/delete',
-    method: 'DELETE',
-    params: { id }
-  })
-}
-
 // 批量删除角色
 export const batchDeleteRole = (ids) => {
   return httpRequest({

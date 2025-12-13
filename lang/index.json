@@ -1142,5 +1142,9 @@
 	"jjipx926": {
 		"zh-cn": "\n    #nprogress .bar {\n      background: red !important; /* 使用主题蓝色 */\n    }\n  ",
 		"en": "#nprogress .bar {\nbackground: red ! important; /* Use theme blue */\n}"
+	},
+	"rl4ob26": {
+		"zh-cn": "当前模式: ",
+		"en": ""
 	}
 }

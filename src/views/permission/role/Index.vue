@@ -74,24 +74,24 @@
                 <template #operation="{ row }">
                     <t-space>
                         <!-- 编辑按钮 -->
-                        <t-button theme="primary" variant="text" size="small" @click="handleEdit(row)">
+                        <t-button :disabled="row.id === 1" theme="primary" variant="text" size="small" @click="handleEdit(row)">
                             <template #icon><t-icon name="edit" /></template>
                             编辑
                         </t-button>
                         <!-- 删除按钮：带确认弹窗 -->
                         <t-popconfirm content="确认删除该角色吗？" @confirm="handleDelete(row)">
-                            <t-button theme="danger" variant="text" size="small">
+                            <t-button :disabled="row.id === 1" theme="danger" variant="text" size="small">
                                 <template #icon><t-icon name="delete" /></template>
                                 删除
                             </t-button>
                         </t-popconfirm>
                         <!-- 分配权限按钮 -->
-                        <t-button theme="success" variant="text" size="small" @click="handleAssignPermission(row)">
+                        <t-button :disabled="row.id === 1" theme="success" variant="text" size="small" @click="handleAssignPermission(row)">
                             <template #icon><t-icon name="user" /></template>
                             分配权限
                         </t-button>
                         <!-- 状态切换按钮 -->
-                        <t-button :theme="row.status === 1 ? 'warning' : 'success'" variant="text" size="small"
+                        <t-button :disabled="row.id === 1" :theme="row.status === 1 ? 'warning' : 'success'" variant="text" size="small"
                             @click="handleToggleStatus(row)">
                             <template #icon><t-icon :name="row.status === 1 ? 'poweroff' : 'check-circle'" /></template>
                             {{ row.status === 1 ? '禁用' : '启用' }}
@@ -157,7 +157,6 @@ import { Message } from '@/utils/ui'
 import {
     addRole,                    // 新增角色
     updateRole,                 // 更新角色
-    deleteRole,                 // 删除角色
     batchDeleteRole,            // 批量删除角色
     updateRoleStatus,           // 更新角色状态
     queryRoleListByPage,        // 分页查询角色数据
@@ -172,7 +171,6 @@ import PermissionAssignDialog from '@/components/permission-assign/PermissionAss
 // 加载状态控制
 const loading = ref(false)                    // 表格数据加载状态
 const submitLoading = ref(false)              // 角色表单提交状态
-const permissionSubmitLoading = ref(false)    // 权限分配提交状态
 
 // 表格相关数据
 const tableData = ref([])                     // 表格数据
@@ -227,7 +225,9 @@ const columns = [
     {
         colKey: 'row-select',    // 多选列
         type: 'multiple',
-        width: 50
+        width: 50,
+        //禁用管理员角色
+        disabled: ({ row }) => row.id === 1,
     },
     {
         colKey: 'id',           // ID列
@@ -375,7 +375,7 @@ const handleEdit = async (row) => {
  * 删除指定角色并刷新列表
  */
 const handleDelete = async (row) => {
-    const response = await deleteRole(row.id)
+    const response = await batchDeleteRole([row.id])
     if (response.code === 200) {
         Message.success('删除成功')
         fetchRoleList()

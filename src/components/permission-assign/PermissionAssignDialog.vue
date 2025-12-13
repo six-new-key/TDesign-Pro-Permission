@@ -35,7 +35,7 @@
           <t-loading size="medium" />
           <span style="margin-left: 8px;">正在加载权限数据...</span>
         </div>
-        <t-tree v-else ref="permissionTreeRef" :data="props.allPermissions"
+        <t-tree v-else :data="props.allPermissions"
           :keys="{ value: 'id', label: 'title', children: 'children' }" checkable hover activable valueMode="all"
           :expand-all="isExpandAll" v-model:value="selectedPermissionIds" v-model:actived="selectedPermissionIds"
           :height="isHalfScreen ? 450 : 220" expand-on-click-node expandParent line :scroll="{
@@ -85,7 +85,6 @@ const props = defineProps({
 const emit = defineEmits(['update:visible', 'save-success'])
 
 // 响应式数据
-const permissionTreeRef = ref(null)
 const permissionLoading = ref(false)
 const selectedPermissionIds = ref([])
 const isExpandAll = ref(true);
@@ -120,6 +119,40 @@ watch(() => props.rolePermissions, (newVal) => {
  */
 const handlePermissionCheck = (checked, { node }) => {
   selectedPermissionIds.value = checked
+}
+
+/**
+ * 获取包含祖先节点的完整ID列表
+ * @param {Array} checkedIds - 当前选中的ID列表
+ * @param {Array} allPermissions - 所有权限树数据
+ * @returns {Array} 包含祖先节点的完整ID列表
+ */
+const getIdsWithAncestors = (checkedIds, allPermissions) => {
+  const result = new Set(checkedIds)
+  const checkedSet = new Set(checkedIds)
+  
+  const traverse = (nodes, ancestors = []) => {
+    nodes.forEach(node => {
+      if (hasCheckedDescendant(node, checkedSet)) {
+        ancestors.forEach(ancestorId => result.add(ancestorId))
+      }
+      
+      if (node.children && node.children.length > 0) {
+        traverse(node.children, [...ancestors, node.id])
+      }
+    })
+  }
+  
+  const hasCheckedDescendant = (node, checkedSet) => {
+    if (checkedSet.has(node.id)) return true
+    if (node.children && node.children.length > 0) {
+      return node.children.some(child => hasCheckedDescendant(child, checkedSet))
+    }
+    return false
+  }
+  
+  traverse(allPermissions)
+  return Array.from(result)
 }
 
 /**
@@ -171,8 +204,12 @@ const filterAllPermissions = (permissions) => {
 const handleSave = async () => {
   permissionLoading.value = true
 
-  // 调用保存权限的API
-  await saveRolePermission(props.roleInfo.id, selectedPermissionIds.value)
+  // 在保存时才收集包含祖先节点的完整ID列表
+  const completeIds = getIdsWithAncestors(selectedPermissionIds.value, props.allPermissions)
+  
+  // 调用保存权限的API，传入完整的ID列表
+  await saveRolePermission(props.roleInfo.id, completeIds)
+  console.log(completeIds)
 
   Message.success('权限分配成功')
   emit('save-success')

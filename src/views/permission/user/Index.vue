@@ -74,19 +74,19 @@
             <template #operation="{ row }">
                 <t-space>
                     <!-- 编辑按钮 -->
-                    <t-button theme="primary" variant="text" size="small" @click="handleEdit(row)">
+                    <t-button :disabled="row.id === 1" theme="primary" variant="text" size="small" @click="handleEdit(row)">
                         <template #icon><t-icon name="edit" /></template>
                         编辑
                     </t-button>
                     <!-- 删除按钮：带确认弹窗 -->
                     <t-popconfirm content="确认删除该用户吗？" @confirm="handleDelete(row)">
-                        <t-button theme="danger" variant="text" size="small">
+                        <t-button :disabled="row.id === 1" theme="danger" variant="text" size="small">
                             <template #icon><t-icon name="delete" /></template>
                             删除
                         </t-button>
                     </t-popconfirm>
                     <!-- 更多操作下拉菜单：角色分配、密码重置、状态切换 -->
-                    <t-dropdown :options="getOperationOptions(row)" @click="handleOperationClick($event, row)">
+                    <t-dropdown :disabled="row.id === 1" :options="getOperationOptions(row)" @click="handleOperationClick($event, row)">
                         <t-button theme="default" variant="outline" size="small">
                             <template #icon><t-icon name="ellipsis" /></template>
                         </t-button>
@@ -245,7 +245,6 @@ import {
     queryUserList,        // 查询用户列表
     addUser,             // 新增用户
     updateUser,          // 更新用户
-    deleteUser,          // 删除用户
     batchDeleteUser,     // 批量删除用户
     updateUserStatus,    // 更新用户状态
     echoUserById,        // 根据ID获取用户信息
@@ -328,7 +327,9 @@ const columns = [
     {
         colKey: 'row-select',    // 多选列
         type: 'multiple',
-        width: 50
+        width: 50,
+        //禁用管理员
+        disabled: ({ row }) => row.id === 1,
     },
     {
         colKey: 'id',           // ID列
@@ -496,7 +497,7 @@ const handleEdit = async (row) => {
 }
 
 const handleDelete = async (row) => {
-    const response = await deleteUser(row.id)
+    const response = await batchDeleteUser([row.id])
     if (response.code === 200) {
         Message.success('删除成功')
         fetchUserList()
